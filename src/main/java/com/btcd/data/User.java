@@ -7,12 +7,30 @@ public class User {
     private String account;
     private String password;
     private String phone;
-    private String balance;
+    private double balance;
     private boolean frozen;
     //邀请链接
     private String invite;
     //注册时间
     private Date time;
+    private boolean activate;
+    private String confirm;
+
+    public String getConfirm() {
+        return confirm;
+    }
+
+    public void setConfirm(String confirm) {
+        this.confirm = confirm;
+    }
+
+    public boolean isActivate() {
+        return activate;
+    }
+
+    public void setActivate(boolean activate) {
+        this.activate = activate;
+    }
 
     public int getId() {
         return id;
@@ -46,11 +64,11 @@ public class User {
         this.phone = phone;
     }
 
-    public String getBalance() {
+    public double getBalance() {
         return balance;
     }
 
-    public void setBalance(String balance) {
+    public void setBalance(double balance) {
         this.balance = balance;
     }
 
