@@ -14,5 +14,7 @@
         <property name="frozen" column="frozen" type="boolean" not-null="true"/>
         <property name="invite" column="invite" type="string" not-null="true"/>
         <property name="time" column="time" type="date" not-null="true"/>
+        <property name="activate" column="activate" type="boolean" not-null="true"/>
+        <property name="confirm" column="confirm" type="string" not-null="true"/>
     </class>
 </hibernate-mapping>

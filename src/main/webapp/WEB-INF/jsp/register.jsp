@@ -111,7 +111,7 @@
                       <label>请输入邮箱:
                         <span>*</span>
                       </label>
-                      <input class="form-control" id="account" name="username" type="text" value="" required>
+                      <input class="form-control" id="account" name="account" type="text" value="" required>
                     </div>
                   </div>
                   <div class="row">
@@ -127,7 +127,7 @@
                       <label>请输入再次密码:
                         <span>*</span>
                       </label>
-                      <input class="form-control" id="repassword" name="password" type="password" value="" required>
+                      <input class="form-control" id="repassword" name="repassword" type="password" value="" required>
                     </div>
                   </div>
                   <div class="row">

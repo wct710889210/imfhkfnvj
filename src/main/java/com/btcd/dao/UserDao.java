@@ -11,4 +11,5 @@ public interface UserDao {
     public User findByAccount(String account);
     public User findOne(int id);
     public List<User> findAll();
+    public User findByConfirm(String confirm);
 }
