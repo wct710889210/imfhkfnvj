@@ -27,7 +27,7 @@
         <property name="maxPoolSize" value="100"/>
         <property name="minPoolSize" value="20"/>
         <property name="initialPoolSize" value="20"/>
-        <property name="maxIdleTime" value="20"/>
+        <property name="maxIdleTime" value="100"/>
     </bean>
 
     <bean id="mySessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
@@ -66,5 +66,12 @@
           class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <!-- one of the properties available; the maximum file size in bytes -->
         <property name="maxUploadSize" value="41943040"/>
+    </bean>
+
+    <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="host" value="smtp.qq.com"/>
+        <property name="port" value="465"/>
+        <property name="username" value="710889210@qq.com"/>
+        <property name="password" value="wlgzivfkpqqdbfjg"/>
     </bean>
 </beans>

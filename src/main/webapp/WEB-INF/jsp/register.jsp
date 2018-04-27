@@ -115,14 +115,14 @@
                   <span id="error"></span>
                 </div>
               </div>
-            </div>
+              
             <form action="registerCheck" method="post" class="reply">
               <div class="row">
                 <div class="col-lg-6 col-xs-12 col-lg-offset-3">
                   <label>请输入邮箱:
                     <span>*</span>
                   </label>
-                  <input class="form-control" id="account" name="username" type="text" value="" required>
+                  <input class="form-control" id="account" name="account" type="text" value="" required>
                 </div>
               </div>
               <div class="row">
@@ -138,7 +138,7 @@
                   <label>请输入再次密码:
                     <span>*</span>
                   </label>
-                  <input class="form-control" id="repassword" name="password" type="password" value="" required>
+                  <input class="form-control" id="repassword" name="repassword" type="password" value="" required>
                 </div>
               </div>
               <div class="row">
@@ -147,7 +147,6 @@
                   <a class="btn-grey btn-small btn-pad" href="#" onclick="history.back(-1)">返回</a>
                 </div>
               </div>
-
               <div class="clearfix">
               </div>
             </form>
