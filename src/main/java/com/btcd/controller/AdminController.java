@@ -218,4 +218,14 @@ public class AdminController {
     public String showClass(){
         return "admin/class";
     }
+
+    @RequestMapping("/classManage")
+    public String classManage(){
+        return "admin/aclass";
+    }
+
+    @RequestMapping("/classChange")
+    public String classChange(){
+        return "admin/mclass";
+    }
 }

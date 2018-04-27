@@ -1,3 +1,4 @@
+<%@page contentType="text/html; charset=utf-8" %>
 <!DOCTYPE html>
 <html class="no-js" lang="zh-cn">
 
@@ -10,31 +11,31 @@
 
     <!-- Stylesheets -->
     <!-- Bootstrap is included in its original form, unaltered -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="admin/css/bootstrap.min.css">
 
     <!-- Related styles of various icon packs and plugins -->
-    <link rel="stylesheet" href="css/plugins.css">
+    <link rel="stylesheet" href="admin/css/plugins.css">
 
     <!-- The main stylesheet of this template. All Bootstrap overwrites are defined in here -->
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="admin/css/main.css">
 
     <!-- Include a specific file here from css/themes/ folder to alter the default theme of the template -->
 
     <!-- The themes stylesheet of this template (for using specific theme color in individual elements - must included last) -->
-    <link rel="stylesheet" href="css/themes.css">
-    <link rel="shortcut icon" href="img/favicon.png">
+    <link rel="stylesheet" href="admin/css/themes.css">
+    <link rel="shortcut icon" href="admin/img/favicon.png">
     <!-- END Stylesheets -->
 
     <!-- Modernizr (browser feature detection library) -->
-    <script src="js/vendor/modernizr-3.3.1.min.js"></script>
+    <script src="admin/js/vendor/modernizr-3.3.1.min.js"></script>
     <!--富文本编辑器部分 开头-->
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-    <script type="text/javascript" charset="utf-8" src="UEditor/ueditor.config.js"></script>
-    <script type="text/javascript" charset="utf-8" src="UEditor/ueditor.all.min.js">
+    <script type="text/javascript" charset="utf-8" src="admin/UEditor/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="admin/UEditor/ueditor.all.min.js">
     </script>
     <!--建议手动加在语言，避免在ie下有时因为加载语言失败导致编辑器加载失败-->
     <!--这里加载的语言文件会覆盖你在配置项目里添加的语言类型，比如你在配置项目里配置的是英文，这里加载的中文，那最后就是中文-->
-    <script type="text/javascript" charset="utf-8" src="UEditor/lang/zh-cn/zh-cn.js"></script>
+    <script type="text/javascript" charset="utf-8" src="admin/UEditor/lang/zh-cn/zh-cn.js"></script>
     <!--富文本编辑器部分 结尾-->
   </head>
 
@@ -60,7 +61,7 @@
           <!-- Sidebar Brand -->
           <div id="sidebar-brand" class="themed-background text-center">
             <a href="index.html" class="sidebar-title">
-              <img src="img/logo.png" width="25%">
+              <img src="admin/img/logo.png" width="25%">
               <strong>比特糖果</strong>
             </a>
           </div>
@@ -294,10 +295,10 @@
     <!-- END Page Wrapper -->
 
     <!-- jQuery, Bootstrap, jQuery plugins and Custom JS code -->
-    <script src="js/vendor/jquery-2.2.4.min.js"></script>
-    <script src="js/vendor/bootstrap.min.js"></script>
-    <script src="js/plugins.js"></script>
-    <script src="js/app.js"></script>
+    <script src="admin/js/vendor/jquery-2.2.4.min.js"></script>
+    <script src="admin/js/vendor/bootstrap.min.js"></script>
+    <script src="admin/js/plugins.js"></script>
+    <script src="admin/js/app.js"></script>
     <!--富文本编辑器的脚本-->
     <script type="text/javascript">
       //实例化编辑器
