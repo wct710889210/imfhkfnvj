@@ -1,3 +1,4 @@
+<%@page contentType="text/html; charset=utf-8" %>
 <!DOCTYPE html>
 <html class="no-js" lang="zh-cn">
 
@@ -8,23 +9,23 @@
 
     <!-- Stylesheets -->
     <!-- Bootstrap is included in its original form, unaltered -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="admin/css/bootstrap.min.css">
 
     <!-- Related styles of various icon packs and plugins -->
-    <link rel="stylesheet" href="css/plugins.css">
+    <link rel="stylesheet" href="admin/css/plugins.css">
 
     <!-- The main stylesheet of this template. All Bootstrap overwrites are defined in here -->
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="admin/css/main.css">
 
     <!-- Include a specific file here from css/themes/ folder to alter the default theme of the template -->
 
     <!-- The themes stylesheet of this template (for using specific theme color in individual elements - must included last) -->
-    <link rel="stylesheet" href="css/themes.css">
-    <link rel="shortcut icon" href="img/favicon.png">
+    <link rel="stylesheet" href="admin/css/themes.css">
+    <link rel="shortcut icon" href="admin/img/favicon.png">
     <!-- END Stylesheets -->
 
     <!-- Modernizr (browser feature detection library) -->
-    <script src="js/vendor/modernizr-3.3.1.min.js"></script>
+    <script src="admin/js/vendor/modernizr-3.3.1.min.js"></script>
   </head>
 
   <body>
@@ -49,7 +50,7 @@
           <!-- Sidebar Brand -->
           <div id="sidebar-brand" class="themed-background text-center">
             <a href="index.html" class="sidebar-title">
-              <img src="img/logo.png" width="25%">
+              <img src="admin/img/logo.png" width="25%">
               <strong>比特糖果</strong>
             </a>
           </div>
@@ -245,7 +246,7 @@
                 <table id="example-datatable" class="table table-striped table-bordered table-vcenter">
                   <thead>
                     <tr>
-                      <th class="text-center" style="width: 60px;">
+                      <th class="text-center">
                         序号
                       </th>
                       <th class="text-center">
@@ -257,7 +258,7 @@
                       <th class="text-center">
                         发布日期
                       </th>
-                      <th class="text-center" style="width: 75px;">
+                      <th class="text-center">
                         操作
                       </th>
                     </tr>
@@ -307,10 +308,10 @@
     <!-- END Page Wrapper -->
 
     <!-- jQuery, Bootstrap, jQuery plugins and Custom JS code -->
-    <script src="js/vendor/jquery-2.2.4.min.js"></script>
-    <script src="js/vendor/bootstrap.min.js"></script>
-    <script src="js/plugins.js"></script>
-    <script src="js/app.js"></script>
+    <script src="admin/js/vendor/jquery-2.2.4.min.js"></script>
+    <script src="admin/js/vendor/bootstrap.min.js"></script>
+    <script src="admin/js/plugins.js"></script>
+    <script src="admin/js/app.js"></script>
   </body>
 
 </html>
