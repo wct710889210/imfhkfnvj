@@ -4,6 +4,7 @@ import com.btcd.dao.BannerDao;
 import com.btcd.dao.ProjectDao;
 import com.btcd.data.Banner;
 import com.btcd.data.Project;
+import com.btcd.data.User;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -97,6 +98,20 @@ public class AdminServiceImp implements AdminService{
     @Override
     public void deleteProject(int id) {
         projectDao.delete(id);
+    }
+
+    @Override
+    public void bannerOn(int id) {
+        Banner banner = bannerDao.findOne(id);
+        banner.setUse(true);
+        bannerDao.update(banner);
+    }
+
+    @Override
+    public void bannerOff(int id) {
+        Banner banner = bannerDao.findOne(id);
+        banner.setUse(false);
+        bannerDao.update(banner);
     }
 
 

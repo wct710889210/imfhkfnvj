@@ -19,4 +19,6 @@ public interface AdminService {
     public Project findProjectById(int id);
     public void updateProject(Project project);
     public void deleteProject(int id);
+    public void bannerOn(int id);
+    public void bannerOff(int id);
 }

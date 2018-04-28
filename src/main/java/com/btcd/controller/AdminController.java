@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
@@ -23,6 +24,20 @@ public class AdminController {
     @RequestMapping("/admin")
     public String admin(){
         return "admin/index";
+    }
+
+    @RequestMapping("bannerOn/{id}")
+    @ResponseBody
+    public boolean bannerOn(@PathVariable("id")int id){
+        adminService.bannerOn(id);
+        return true;
+    }
+
+    @RequestMapping("bannerOff/{id}")
+    @ResponseBody
+    public boolean bannerOff(@PathVariable("id")int id){
+        adminService.bannerOff(id);
+        return true;
     }
 
     @RequestMapping("/banner")
@@ -82,7 +97,7 @@ public class AdminController {
             if(deleteFile.exists()){
                 deleteFile.delete();
             }
-            banner.setPath(ultiPath.getAbsolutePath());
+            banner.setPath(ultiPath.getPath().substring(47));
         }
         adminService.updateBanner(banner);
         return "redirect:/bannerManage";
@@ -110,7 +125,7 @@ public class AdminController {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            adminService.saveBanner(description,ultiPath.getAbsolutePath());
+            adminService.saveBanner(description,ultiPath.getPath().substring(47));
         } else {
             //TODO 文件为空时的情况（未完成）
             return "redirect:/bannerManage";
@@ -143,7 +158,7 @@ public class AdminController {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            adminService.saveProject(title, ultiPath.getAbsolutePath(), content, method, address, state, price, endTime, top);
+            adminService.saveProject(title, ultiPath.getPath().substring(47), content, method, address, state, price, endTime, top);
         } else {
             //TODO 文件为空时的情况（未完成）
             return "redirect:/activityManage";
@@ -208,7 +223,7 @@ public class AdminController {
             if(deleteFile.exists()){
                 deleteFile.delete();
             }
-            project.setPath(ultiPath.getAbsolutePath());
+            project.setPath(ultiPath.getPath().substring(47));
         }
         adminService.updateProject(project);
         return "redirect:/activityManage";

@@ -90,18 +90,14 @@
         <!-- Content Start -->
         <div id="main">
           <!-- Slider Start-->
-          <div class="slider-wrapper theme-default">
-            <div id="nivoslider" class="nivoSlider">
-              <a href="#">
-            <img src="img/slider/nivo_slider1.jpg" alt="Nature" title="#htmlcaption1">
-          </a>
-              <a href="#">
-            <img src="img/slider/nivo_slider3.jpg"   alt="" data-transition="slideInLeft" title="#htmlcaption2">
-          </a>
-              <a href="#">
-            <img src="img/slider/nivo_slider4.jpg" alt="" data-transition="slideInRight" title="#htmlcaption3">
-          </a>
-            </div>
+            <div class="slider-wrapper theme-default">
+                <div id="nivoslider" class="nivoSlider"
+                     <c:forEach items="${banners}" var="banner">
+                         <a href="#">
+                             <img src="${banner.getPath()}" alt="" data-transition="slideInRight" title="#htmlcaption${banner.getId()}">
+                         </a>
+                     </c:forEach>
+                </div>
             <c:forEach var="banner" items="${banners}">
               <div id="htmlcaption${banner.getId()}" class="nivo-html-caption">
                 <h2>

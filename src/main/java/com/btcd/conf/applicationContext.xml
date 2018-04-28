@@ -23,7 +23,7 @@
         <property name="driverClass" value="com.mysql.cj.jdbc.Driver"/>
         <property name="jdbcUrl" value="jdbc:mysql://localhost/bitcandyweb?serverTimezone=UTC"/>
         <property name="user" value="root"/>
-        <property name="password" value="123456789"/>
+        <property name="password" value="wct123456"/>
         <property name="maxPoolSize" value="100"/>
         <property name="minPoolSize" value="20"/>
         <property name="initialPoolSize" value="20"/>
