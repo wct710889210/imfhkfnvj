@@ -97,7 +97,7 @@ public class AdminController {
             if(deleteFile.exists()){
                 deleteFile.delete();
             }
-            banner.setPath(ultiPath.getPath().substring(47));
+            banner.setPath(ultiPath.getPath().substring(ultiPath.getPath().indexOf("uploadFiles")));
         }
         adminService.updateBanner(banner);
         return "redirect:/bannerManage";
@@ -125,7 +125,7 @@ public class AdminController {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            adminService.saveBanner(description,ultiPath.getPath().substring(47));
+            adminService.saveBanner(description,ultiPath.getPath().substring(ultiPath.getPath().indexOf("uploadFiles")));
         } else {
             //TODO 文件为空时的情况（未完成）
             return "redirect:/bannerManage";
@@ -158,7 +158,7 @@ public class AdminController {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            adminService.saveProject(title, ultiPath.getPath().substring(47), content, method, address, state, price, endTime, top);
+            adminService.saveProject(title, ultiPath.getPath().substring(ultiPath.getPath().indexOf("uploadFiles")), content, method, address, state, price, endTime, top);
         } else {
             //TODO 文件为空时的情况（未完成）
             return "redirect:/activityManage";
@@ -223,7 +223,7 @@ public class AdminController {
             if(deleteFile.exists()){
                 deleteFile.delete();
             }
-            project.setPath(ultiPath.getPath().substring(47));
+            project.setPath(ultiPath.getPath().substring(ultiPath.getPath().indexOf("uploadFiles")));
         }
         adminService.updateProject(project);
         return "redirect:/activityManage";
