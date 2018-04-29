@@ -1,4 +1,5 @@
 <%@page contentType="text/html; charset=UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
 <!--[if IE 9]>			<html class="ie ie9"> <![endif]-->
@@ -34,58 +35,7 @@
   <body class="home">
     <div class="wrap">
       <!-- Header Start -->
-      <header id="header">
-        <!-- Main Header Start -->
-        <div class="main-header">
-          <div class="container">
-            <!-- TopNav Start -->
-            <div class="topnav navbar-header">
-              <a class="navbar-toggle down-button" data-toggle="collapse" data-target=".slidedown">
-                <i class="icon-angle-down icon-current"></i>
-              </a>
-            </div>
-            <!-- TopNav End -->
-            <!-- Logo Start -->
-            <div class="logo pull-left">
-              <h1>
-                <a href="index.jsp">
-                <img src="img/logo.png" alt="pixma" height="80">
-              </a>
-              </h1>
-            </div>
-            <!-- Logo End -->
-            <!-- Mobile Menu Start -->
-            <div class="mobile navbar-header">
-              <a class="navbar-toggle" data-toggle="collapse" href=".html">
-                <i class="icon-reorder icon-2x"></i>
-              </a>
-            </div>
-            <!-- Mobile Menu End -->
-            <!-- Menu Start -->
-            <nav class="collapse navbar-collapse menu">
-              <ul class="nav navbar-nav sf-menu">
-                <li>
-                  <a href="index.jsp">首页</a>
-                </li>
-                <li>
-                  <a href="bitclass.jsp">比特学堂</a>
-                </li>
-                <li>
-                  <a href="#">糖果活动</a>
-                </li>
-                <li>
-                  <a href="mine.jsp" id="current">用户中心</a>
-                </li>
-                <li>
-                  <a href="about.jsp">关于我们</a>
-                </li>
-              </ul>
-            </nav>
-            <!-- Menu End -->
-          </div>
-        </div>
-        <!-- Main Header End -->
-      </header>
+      <%@include file="header.jsp"%>
       <div id="main">
         <!-- Title, Breadcrumb Start-->
         <div class="breadcrumb-wrapper">
@@ -113,8 +63,13 @@
                           <i class="icon-bitcoin icon-2x white wellleft"></i>
                         </div>
                         <div class="col-md-6">
-                          <div class="text-center white wellright">10</div>
-                          <div class="text-center white wellrightbt">（冻结）20</div>
+                          ${user.getAccount()}
+                          <div class="text-center white wellright">${user.getBalance()}</div>
+                          <div class="text-center white wellrightbt">
+                            <c:if test="${user.isFrozen()}">
+                              （冻结)
+                            </c:if>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -133,7 +88,7 @@
 
                     <div class="form-group">
                       <span>邀请朋友获取更多糖果</span>
-                      <input type="text" class="form-control" value="https://www.getit01.com/p20180104137811449/" disabled/>
+                      <input type="text" class="form-control" value="${user.getInvite()}" disabled/>
                     </div>
                   </div>
                   <div class="col-md-2">
@@ -155,17 +110,17 @@
                       </thead>
                       <tbody>
                         <tr>
-                          <td>134****4344</td>
+                          <td>未做好</td>
                           <td>2018年4月24日</td>
                           <td>+ 15 枚 BTCD</td>
                         </tr>
                         <tr>
-                          <td>134****4344</td>
+                          <td>未做好</td>
                           <td>2018年4月24日</td>
                           <td>+ 15 枚 BTCD</td>
                         </tr>
                         <tr>
-                          <td>134****4344</td>
+                          <td>未做好</td>
                           <td>2018年4月24日</td>
                           <td>+ 15 枚 BTCD</td>
                         </tr>

@@ -1,4 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html>
 <!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
@@ -9,7 +8,7 @@
 
   <head>
     <meta charset="utf-8">
-    <title>比特学堂</title>
+    <title>关于我们</title>
     <meta name="description" content="比特糖果 区块链 代币 糖果 candy">
     <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,79 +28,39 @@
     <!-- Switcher CSS -->
     <link href="css/switcher.css" rel="stylesheet">
     <link href="css/spectrum.css" rel="stylesheet">
-    <link rel="shortcut icon" href="admin/img/favicon.png">
   </head>
 
   <body class="home">
     <div class="wrap">
-      <!-- Header Start -->
       <%@include file="header.jsp"%>
       <!-- Header End -->
       <!-- Title, Breadcrumb Start-->
-
-      <!-- Title, Breadcrumb End-->
-      <!-- Content Start -->
-      <!-- Main Content start-->
       <div class="breadcrumb-wrapper">
         <div class="container">
           <div class="row">
             <div class="col-lg-6 col-md-6 col-xs-12 col-sm-6">
-              <h2 class="title">比特学堂</h2>
+              <h2 class="title">激活成功</h2>
             </div>
           </div>
         </div>
       </div>
-
+      <!-- Title, Breadcrumb End-->
+      <!-- Content Start -->
+      <!-- Main Content start-->
       <div class="content">
         <div class="container">
           <div class="row">
             <div class="posts-block col-lg-12 col-md-12 col-sm-12 col-xs-12">
-
-              <c:forEach var="bitclass" items="${bitclasses}">
-              <article class="post hentry">
-                <div class="post-content-wrap">
-                  <header class="post-header">
-                    <div class="post-date">
-                      <a class="date" href="#">
-                        <strong>05</strong>
-                        <i>3月</i>
-                      </a>
-                    </div>
-                    <h3 class="content-title"><a href="#">${bitclass.getTitle()}</a></h3>
-                    <div class="blog-entry-meta">
-                      <div class="blog-entry-meta-author">
-                        <i class="icon-user"></i>
-                        <a class="blog-entry-meta-author">${bitclass.getAuth()}</a>
-                      </div>
-                      <div class="blog-entry-meta-tags">
-                        <i class="icon-time"></i>
-                        <a href="#" class="grey">${bitclass.getTime()}</a>
-                      </div>
-                    </div>
-                  </header>
-                  <div class="post-content">
-                    ${bitclass.getContent()}
-                  </div>
+              <article>
+                <div class="post-content">
+                  <p>恭喜，激活成功，点击跳转至<a href="/bitcandy/login">登录页面</a></p>
                 </div>
-                <div class="clearfix"></div>
               </article>
-              <div class="blog-divider"></div>
-              </c:forEach>
-
-              <div class="pagination-centered">
-                <ul class="pagination">
-                  <li class="disabled"><a href="#">«</a></li>
-                  <li class="active"><a href="#">1</a></li>
-                  <li><a href="#">2</a></li>
-                  <li><a href="#">3</a></li>
-                  <li><a href="#">4</a></li>
-                  <li><a href="#">5</a></li>
-                  <li><a href="#">»</a></li>
-                </ul>
-              </div>
             </div>
-            <!-- Sidebar End -->
+            <!-- Left Section End -->
+            <div class="clearfix"></div>
           </div>
+          <div class="divider"></div>
         </div>
       </div>
       <!-- Main Content end-->

@@ -34,58 +34,9 @@
 <body class="home">
 <div class="wrap">
   <!-- Header Start -->
-  <header id="header">
-    <!-- Main Header Start -->
-    <div class="main-header">
-      <div class="container">
-        <!-- TopNav Start -->
-        <div class="topnav navbar-header">
-          <a class="navbar-toggle down-button" data-toggle="collapse" data-target=".slidedown">
-            <i class="icon-angle-down icon-current"></i>
-          </a>
-        </div>
-        <!-- TopNav End -->
-        <!-- Logo Start -->
-        <div class="logo pull-left">
-          <h1>
-            <a href="index.html">
-              <img src="img/logo.png" alt="pixma" height="80">
-            </a>
-          </h1>
-        </div>
-        <!-- Logo End -->
-        <!-- Mobile Menu Start -->
-        <div class="mobile navbar-header">
-          <a class="navbar-toggle" data-toggle="collapse" href=".html">
-            <i class="icon-reorder icon-2x"></i>
-          </a>
-        </div>
-        <!-- Mobile Menu End -->
-        <!-- Menu Start -->
-        <nav class="collapse navbar-collapse menu">
-          <ul class="nav navbar-nav sf-menu">
-            <li>
-              <a href="index.html">首页</a>
-            </li>
-            <li>
-              <a href="bitclass.html">比特学堂</a>
-            </li>
-            <li>
-              <a href="#">糖果活动</a>
-            </li>
-            <li>
-              <a href="mine.html" id="current">用户中心</a>
-            </li>
-            <li>
-              <a href="about.html">关于我们</a>
-            </li>
-          </ul>
-        </nav>
-        <!-- Menu End -->
-      </div>
-    </div>
-    <!-- Main Header End -->
-  </header>
+
+  <%@include file="header.jsp"%>
+
   <!-- Header End -->
   <!-- Content Start -->
   <!-- Main Content start-->
@@ -117,7 +68,7 @@
                 </div>
               </div>
               
-            <form action="registerCheck" method="post" class="reply">
+            <form method="post" class="reply" id="contact">
               <div class="row">
                 <div class="col-lg-6 col-xs-12 col-lg-offset-3">
                   <label>请输入邮箱:
@@ -229,27 +180,54 @@
   });
 
   $('#register').on('click', function () {
-    var username = $('#username').val();
-    var password = $('#password').val();
-    var repassword = $('#repassword').val();
-    console.log(username);
-    console.log(password);
-    console.log(repassword);
-    var Reg = /^[a-zA-Z0-9_-]+@([a-zA-Z0-9]+\.)+(com|cn|net|org)$/;
-    if (!Reg.test(username)) {
-      $('#error').html('邮箱格式有误，请重新输入！');
-      $('.alert').fadeIn(500, function () {
-      });
-    } else if (password == '' || repassword == '') {
-      $('#error').html('密码不能为空，请重新输入！');
-      $('.alert').fadeIn(500, function () {
-      });
-    } else if (password != repassword) {
-      $('#error').html('两次输入密码不一致，请重新输入！');
-      $('.alert').fadeIn(500, function () {
-      });
-    }
+      var account = $('#account').val();
+      var password = $('#password').val();
+      var repassword = $('#repassword').val();
+      console.log(account);
+      console.log(password);
+      console.log(repassword);
+      var Reg = /^[a-zA-Z0-9_-]+@([a-zA-Z0-9]+\.)+(com|cn|net|org)$/;
+      if (!Reg.test(account)) {
+          $('#error').html('邮箱格式有误，请重新输入！');
+          $('.alert').fadeIn(500, function () {
+          });
+      } else if (password == '' || repassword == '') {
+          $('#error').html('密码不能为空，请重新输入！');
+          $('.alert').fadeIn(500, function () {
+          });
+      } else if (password != repassword) {
+          $('#error').html('两次输入密码不一致，请重新输入！');
+          $('.alert').fadeIn(500, function () {
+          });
+      }else{
+          $('#error').html('正在进行注册验证，请稍等');
+          $('.alert').fadeIn(500, function () {
+          });
+          formSubmit();
+      }
   })
+
+  function formSubmit() {
+      var text = "account=" + $("[name=account]").val().toString() + "&password=" + $("[name=password]").val().toString();
+      $.ajax({
+          data: text,
+          type: "post",
+          url: "/bitcandy/registerCheck",
+          success: function (response) {
+              if (response == "1") {
+                  $('#error').html('该邮箱已被占用');
+                  $('.alert').fadeIn(500, function () {
+                  });
+              } else if (response == "0") {
+                  $('#error').html('注册成功，请登录邮箱激活');
+                  $('.alert').fadeIn(500, function () {
+                  });
+                  setTimeout("window.location.href='login'", 2000);
+              }
+          }
+      })
+  }
+
 </script>
 </body>
 

@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html>
 <!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
@@ -14,80 +15,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Library CSS -->
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/fonts/font-awesome/css/font-awesome.css">
-    <link rel="stylesheet" href="css/animations.css" media="screen">
-    <link rel="stylesheet" href="css/superfish.css" media="screen">
-    <link rel="stylesheet" href="css/revolution-slider/css/settings.css" media="screen">
-    <link rel="stylesheet" href="css/prettyPhoto.css" media="screen">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/fonts/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="../css/animations.css" media="screen">
+    <link rel="stylesheet" href="../css/superfish.css" media="screen">
+    <link rel="stylesheet" href="../css/revolution-slider/css/settings.css" media="screen">
+    <link rel="stylesheet" href="../css/prettyPhoto.css" media="screen">
     <!-- Theme CSS -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <!-- Skin -->
-    <link rel="stylesheet" href="css/colors/blue.css" id="colors">
+    <link rel="stylesheet" href="../css/colors/blue.css" id="colors">
     <!-- Responsive CSS -->
-    <link rel="stylesheet" href="css/theme-responsive.css">
+    <link rel="stylesheet" href="../css/theme-responsive.css">
     <!-- Switcher CSS -->
     <link href="css/switcher.css" rel="stylesheet">
     <link href="css/spectrum.css" rel="stylesheet">
     <link rel="shortcut icon" href="admin/img/favicon.png">
+
 
   </head>
 
   <body class="home">
     <div class="wrap">
       <!-- Header Start -->
-      <header id="header">
-        <!-- Main Header Start -->
-        <div class="main-header">
-          <div class="container">
-            <!-- TopNav Start -->
-            <div class="topnav navbar-header">
-              <a class="navbar-toggle down-button" data-toggle="collapse" data-target=".slidedown">
-                <i class="icon-angle-down icon-current"></i>
-              </a>
-            </div>
-            <!-- TopNav End -->
-            <!-- Logo Start -->
-            <div class="logo pull-left">
-              <h1>
-                <a href="index.jsp">
-                <img src="img/logo.png" alt="pixma" height="80">
-              </a>
-              </h1>
-            </div>
-            <!-- Logo End -->
-            <!-- Mobile Menu Start -->
-            <div class="mobile navbar-header">
-              <a class="navbar-toggle" data-toggle="collapse" href=".html">
-                <i class="icon-reorder icon-2x"></i>
-              </a>
-            </div>
-            <!-- Mobile Menu End -->
-            <!-- Menu Start -->
-            <nav class="collapse navbar-collapse menu">
-              <ul class="nav navbar-nav sf-menu">
-                <li>
-                  <a href="index.jsp">首页</a>
-                </li>
-                <li>
-                  <a href="bitclass.jsp">比特学堂</a>
-                </li>
-                <li>
-                  <a href="#">糖果活动</a>
-                </li>
-                <li>
-                  <a href="mine.jsp">用户中心</a>
-                </li>
-                <li>
-                  <a href="about.jsp">关于我们</a>
-                </li>
-              </ul>
-            </nav>
-            <!-- Menu End -->
-          </div>
-        </div>
-        <!-- Main Header End -->
-      </header>
+
+      <%@include file="header.jsp"%>
       <!-- Header End -->
       <!-- Content Start -->
       <div id="main">
@@ -98,24 +50,24 @@
               <!-- THE FIRST SLIDE -->
               <li data-delay="6000" data-masterspeed="300" data-transition="fade">
                 <div class="slotholder">
-                  <img src="img/slider/slider-bg-1.jpg" data-fullwidthcentering="on" alt="Pixma">
+                  <img src="../img/slider/slider-bg-1.jpg" data-fullwidthcentering="on" alt="Pixma">
                 </div>
                 <div class="caption modern_big_bluebg h1 lft tp-caption start" data-x="400" data-y="85" data-speed="700" data-endspeed="800"
                   data-start="1000" data-easing="easeOutQuint" data-endeasing="easeOutQuint">
-                  <h3>EOZ.ONE：注册送 5000 糖果</h3>
+                  <h3>${project.getTitle()}</h3>
                 </div>
                 <div class="caption list_slide lfb tp-caption start" data-easing="easeOutExpo" data-start="1400" data-speed="1050" data-y="180"
                   data-x="600">
                   <div class="list-slide">
                     <i class="icon-tag slide-icon"></i>
-                    <h5 class="dblue"> 发放中 </h5>
+                    <h5 class="dblue">${project.getState()}</h5>
                   </div>
                 </div>
                 <div class="caption list_slide lfb tp-caption start" data-easing="easeOutExpo" data-start="1800" data-speed="1200" data-y="230"
                   data-x="600">
                   <div class="list-slide">
                     <i class="icon-time slide-icon"></i>
-                    <h5 class="dblue"> 2018.05.17 </h5>
+                    <h5 class="dblue"> ${project.getEndTime()} </h5>
                   </div>
                 </div>
                 <div class="caption list_slide lfb tp-caption start" data-easing="easeOutExpo" data-start="2200" data-speed="1350" data-y="280"
@@ -137,7 +89,7 @@
                   <h3 class="title">如何领取</h3>
                   <div class="post-content">
                     <p>
-                      注册即送 5000 枚，邀请 m1 送 5000 枚，邀请 m2 送 2500 枚，邀请 m3 送 1250 枚，邀请 m4 送 600 枚，邀请 m5 送 300 枚，邀请 m6 送 150 枚。m1 的意思就是，你邀请的好友，m2 就是您好友邀请的好友，依此类推。
+                      ${project.getMethod()}
                     </p>
                   </div>
                 </article>
@@ -149,7 +101,7 @@
                   <h3 class="title">领取有效期</h3>
                   <div class="post-content">
                     <p>
-                      2018-05-17 </p>
+                      ${project.getEndTime()} </p>
                   </div>
                 </article>
               </div>
@@ -160,8 +112,8 @@
                   <h3 class="title">项目介绍</h3>
                   <div class="post-content">
                     <p>
-                      EOZ 糖果总共 500 亿枚，全部免费赠送给推广者和注册者，推广日期为 500 亿枚全部送出截止。我们将积极联系主流平台支持，并且自身也会开设全方位多渠道供其流通和生产环境下的应用。 EOZ 糖果数据将永久保留，EOS主链上线三周内，我们将发行
-                      EOZ TOKEN，届时有详细教程教大家如何提币至钱包。</p>
+                      ${project.getContent()}
+                    </p>
                   </div>
                 </article>
               </div>
@@ -169,7 +121,7 @@
             <div class="row">
               <div class="posts-block col-lg-6 col-md-6 col-sm-12 col-xs-12 col-md-offset-3">
                 <div class="text-center">
-                  <a href="#" class="btn-normal btn-color">
+                  <a href="${project.getAddress()}" class="btn-normal btn-color">
                     <i class="icon-hand-right icon-large"></i> 立即领取</a>
                 </div>
               </div>
@@ -199,16 +151,17 @@
                   <h3 class="title">其他项目</h3>
                 </div>
                 <div class="clearfix"></div>
+
+                <c:forEach var="item" items="${projects}" begin="0" end="2">
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                  <a href="#" class="content-box">
+                  <a href="../details/${item.getId()}" class="content-box">
                     <div class="content-box-icon">
-                      <img src="img/portfolio/portfolio-6.jpg" alt=" " />
+                      <img src="../${item.getPath()}" alt=" " />
                     </div>
                     <div class="content-box-info">
-                      <h4>EOZ.ONE：注册送 5000 糖果</h4>
+                      <h4>${item.getTitle()}</h4>
                       <p>
-                        EOZ 糖果总共 500 亿枚，全部免费赠送给推广者和注册者，推广日期为 500 亿枚全部送出截止。我们将积极联系主流平台支持，并且自身也会开设全方位多渠道供其流通和生产环境下的应用。 EOZ 糖果数据将永久保留，EOS主链上线三周内，我们将发行
-                        EOZ TOKEN，届时有详细教程教大家如何提币至钱包。
+                        ${item.getContent()}
                       </p>
                     </div>
                   </a>
@@ -216,67 +169,17 @@
                     <thead>
                       <tr>
                         <th>
-                          <i class="icon-tag"></i>&nbsp;&nbsp;&nbsp;发放中</th>
+                          <i class="icon-tag"></i>&nbsp;&nbsp;&nbsp;${item.getState()}</th>
                         <th>
-                          <i class="icon-credit-card"></i>&nbsp;&nbsp;&nbsp;$1000</th>
+                          <i class="icon-credit-card"></i>&nbsp;&nbsp;&nbsp;$${item.getPrice()}</th>
                         <th>
-                          <i class="icon-time"></i>&nbsp;&nbsp;&nbsp;2018.10.10</th>
+                          <i class="icon-time"></i>&nbsp;&nbsp;&nbsp;${item.getEndTime()}</th>
                       </tr>
                     </thead>
                   </table>
                 </div>
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                  <a href="#" class="content-box">
-                    <div class="content-box-icon">
-                      <img src="img/portfolio/portfolio-3.jpg" alt=" " />
-                    </div>
-                    <div class="content-box-info">
-                      <h4>EOZ.ONE：注册送 5000 糖果</h4>
-                      <p>
-                        EOZ 糖果总共 500 亿枚，全部免费赠送给推广者和注册者，推广日期为 500 亿枚全部送出截止。我们将积极联系主流平台支持，并且自身也会开设全方位多渠道供其流通和生产环境下的应用。 EOZ 糖果数据将永久保留，EOS主链上线三周内，我们将发行
-                        EOZ TOKEN，届时有详细教程教大家如何提币至钱包。
-                      </p>
-                    </div>
-                  </a>
-                  <table class="table table-striped table-bordered">
-                    <thead>
-                      <tr>
-                        <th>
-                          <i class="icon-tag"></i>&nbsp;&nbsp;&nbsp;发放中</th>
-                        <th>
-                          <i class="icon-credit-card"></i>&nbsp;&nbsp;&nbsp;$1000</th>
-                        <th>
-                          <i class="icon-time"></i>&nbsp;&nbsp;&nbsp;2018.10.10</th>
-                      </tr>
-                    </thead>
-                  </table>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                  <a href="#" class="content-box">
-                    <div class="content-box-icon">
-                      <img src="img/portfolio/portfolio-7.jpg" alt=" " />
-                    </div>
-                    <div class="content-box-info">
-                      <h4>EOZ.ONE：注册送 5000 糖果</h4>
-                      <p>
-                        EOZ 糖果总共 500 亿枚，全部免费赠送给推广者和注册者，推广日期为 500 亿枚全部送出截止。我们将积极联系主流平台支持，并且自身也会开设全方位多渠道供其流通和生产环境下的应用。 EOZ 糖果数据将永久保留，EOS主链上线三周内，我们将发行
-                        EOZ TOKEN，届时有详细教程教大家如何提币至钱包。
-                      </p>
-                    </div>
-                  </a>
-                  <table class="table table-striped table-bordered">
-                    <thead>
-                      <tr>
-                        <th>
-                          <i class="icon-tag"></i>&nbsp;&nbsp;&nbsp;发放中</th>
-                        <th>
-                          <i class="icon-credit-card"></i>&nbsp;&nbsp;&nbsp;$1000</th>
-                        <th>
-                          <i class="icon-time"></i>&nbsp;&nbsp;&nbsp;2018.10.10</th>
-                      </tr>
-                    </thead>
-                  </table>
-                </div>
+                </c:forEach>
+
                 <!-- 3 Column Services End-->
                 <div class="clearfix"></div>
               </div>
@@ -427,25 +330,25 @@
     </div>
   </section> -->
     <!-- The Scripts -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.js"></script>
-    <script src="js/jquery.parallax.js"></script>
-    <script src="js/modernizr-2.6.2.min.js"></script>
-    <script src="js/revolution-slider/js/jquery.themepunch.revolution.min.js"></script>
-    <script src="js/jquery.nivo.slider.pack.js"></script>
-    <script src="js/jquery.prettyPhoto.js"></script>
-    <script src="js/superfish.js"></script>
-    <script src="js/tweetMachine.js"></script>
-    <script src="js/tytabs.js"></script>
-    <script src="js/jquery.gmap.min.js"></script>
-    <script src="js/circularnav.js"></script>
-    <script src="js/jquery.sticky.js"></script>
-    <script src="js/jflickrfeed.js"></script>
-    <script src="js/imagesloaded.pkgd.min.js"></script>
-    <script src="js/waypoints.min.js"></script>
-    <script src="js/spectrum.js"></script>
-    <script src="js/switcher.js"></script>
-    <script src="js/custom.js"></script>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/jquery.parallax.js"></script>
+    <script src="../js/modernizr-2.6.2.min.js"></script>
+    <script src="../js/revolution-slider/js/jquery.themepunch.revolution.min.js"></script>
+    <script src="../js/jquery.nivo.slider.pack.js"></script>
+    <script src="../js/jquery.prettyPhoto.js"></script>
+    <script src="../js/superfish.js"></script>
+    <script src="../js/tweetMachine.js"></script>
+    <script src="../js/tytabs.js"></script>
+    <script src="../js/jquery.gmap.min.js"></script>
+    <script src="../js/circularnav.js"></script>
+    <script src="../js/jquery.sticky.js"></script>
+    <script src="../js/jflickrfeed.js"></script>
+    <script src="../js/imagesloaded.pkgd.min.js"></script>
+    <script src="../js/waypoints.min.js"></script>
+    <script src="../js/spectrum.js"></script>
+    <script src="../js/switcher.js"></script>
+    <script src="../js/custom.js"></script>
   </body>
 
 </html>

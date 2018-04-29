@@ -1,9 +1,7 @@
 package com.btcd.service;
 
-import com.btcd.dao.BannerDao;
-import com.btcd.dao.ProjectDao;
-import com.btcd.data.Banner;
-import com.btcd.data.Project;
+import com.btcd.dao.*;
+import com.btcd.data.*;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +17,12 @@ public class AdminServiceImp implements AdminService{
     private BannerDao bannerDao;
     @Autowired
     private ProjectDao projectDao;
+    @Autowired
+    private UserDao userDao;
+    @Autowired
+    private BitclassDao bitclassDao;
+    @Autowired
+    private AdminDao adminDao;
 
     @Override
     public String generateRandomFilename() {
@@ -97,6 +101,60 @@ public class AdminServiceImp implements AdminService{
     @Override
     public void deleteProject(int id) {
         projectDao.delete(id);
+    }
+
+    @Override
+    public void bannerOn(int id) {
+        Banner banner = bannerDao.findOne(id);
+        banner.setUse(true);
+        bannerDao.update(banner);
+    }
+
+    @Override
+    public void bannerOff(int id) {
+        Banner banner = bannerDao.findOne(id);
+        banner.setUse(false);
+        bannerDao.update(banner);
+    }
+
+    @Override
+    public void saveBitclass(String title,String auth, String content) {
+        Bitclass bitclass = new Bitclass();
+        bitclass.setTitle(title);
+        bitclass.setAuth(auth);
+        bitclass.setContent(content);
+        bitclass.setTime(new Date(System.currentTimeMillis()));
+        bitclassDao.add(bitclass);
+    }
+
+    @Override
+    public List<Bitclass> findAllBitclass() {
+        return bitclassDao.findAll();
+    }
+
+    @Override
+    public Bitclass findBitclassById(int id) {
+        return bitclassDao.findOne(id);
+    }
+
+    @Override
+    public void updateBitclass(Bitclass bitclass) {
+        bitclassDao.update(bitclass);
+    }
+
+    @Override
+    public void deleteBitclass(int id) {
+        bitclassDao.delete(id);
+    }
+
+    @Override
+    public User findUserByAccount(String account) {
+        return userDao.findByAccount(account);
+    }
+
+    @Override
+    public Admin findAdminByAccount(String account) {
+        return adminDao.findByAccount(account);
     }
 
 

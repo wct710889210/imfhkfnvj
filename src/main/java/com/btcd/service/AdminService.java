@@ -1,7 +1,6 @@
 package com.btcd.service;
 
-import com.btcd.data.Banner;
-import com.btcd.data.Project;
+import com.btcd.data.*;
 
 import java.sql.Date;
 import java.util.List;
@@ -19,4 +18,16 @@ public interface AdminService {
     public Project findProjectById(int id);
     public void updateProject(Project project);
     public void deleteProject(int id);
+    public void bannerOn(int id);
+    public void bannerOff(int id);
+
+    public void saveBitclass(String title,String auth,String content);
+    public List<Bitclass> findAllBitclass();
+    public Bitclass findBitclassById(int id);
+    public void updateBitclass(Bitclass bitclass);
+    public void deleteBitclass(int id);
+
+    public User findUserByAccount(String account);
+
+    public Admin findAdminByAccount(String account);
 }
