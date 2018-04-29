@@ -165,6 +165,11 @@
 <script src="admin/js/vendor/bootstrap.min.js"></script>
 <script src="admin/js/plugins.js"></script>
 <script src="admin/js/app.js"></script>
+<script src="admin/js/pages/uiTables.js"></script>
+<script>$(function () {
+            UiTables.init();
+        });
+</script>
 </body>
 
 </html>

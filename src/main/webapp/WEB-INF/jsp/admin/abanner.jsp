@@ -89,7 +89,7 @@
               <tr>
                 <th class="text-center">序号</th>
                 <th class="text-center">介绍</th>
-                <th class="text-center">发布日期</th>
+                <th class="text-center">图片</th>
                 <th class="text-center">选择</th>
                 <th class="text-center">操作</th>
               </tr>
@@ -99,7 +99,11 @@
                 <tr>
                   <td class="text-center">序号递增显示</td>
                   <td class="text-center">${banner.getTitle()}</td>
-                  <td class="text-center">不用显示</td>
+                  <td class="text-center">
+                      <a href="img/1.jpg" data-toggle="lightbox-image">
+                        <img src="img/1.jpg" height="100">
+                      </a>
+                  </td>
                   <td class="text-center">
                     <label class="csscheckbox csscheckbox-info">
                       <input type="checkbox" checked>
@@ -162,6 +166,11 @@
 <script src="admin/js/vendor/bootstrap.min.js"></script>
 <script src="admin/js/plugins.js"></script>
 <script src="admin/js/app.js"></script>
+<script src="admin/js/pages/uiTables.js"></script>
+<script>$(function () {
+            UiTables.init();
+        });
+</script>
 </body>
 
 </html>

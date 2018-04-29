@@ -135,10 +135,15 @@
     <!-- END Page Wrapper -->
 
     <!-- jQuery, Bootstrap, jQuery plugins and Custom JS code -->
-    <script src="admin/js/vendor/jquery-2.2.4.min.js"></script>
-    <script src="admin/js/vendor/bootstrap.min.js"></script>
-    <script src="admin/js/plugins.js"></script>
-    <script src="admin/js/app.js"></script>
+    <script src="js/vendor/jquery-2.2.4.min.js"></script>
+    <script src="js/vendor/bootstrap.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/app.js"></script>
+    <script src="admin/js/pages/uiTables.js"></script>
+    <script>$(function () {
+                UiTables.init();
+            });
+    </script>
   </body>
 
 </html>

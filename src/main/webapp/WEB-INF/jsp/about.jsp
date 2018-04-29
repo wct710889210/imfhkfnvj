@@ -28,11 +28,13 @@
   <!-- Switcher CSS -->
   <link href="css/switcher.css" rel="stylesheet">
   <link href="css/spectrum.css" rel="stylesheet">
+  <link rel="shortcut icon" href="admin/img/favicon.png">
 </head>
 
 <body class="home">
   <div class="wrap">
     <!-- Header Start -->
+
       <%@include file="header.jsp"%>
     <!-- Header End -->
     <!-- Title, Breadcrumb Start-->
