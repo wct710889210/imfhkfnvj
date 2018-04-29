@@ -1,5 +1,6 @@
 package com.btcd.service;
 
+import com.btcd.conf.StaticConf;
 import com.btcd.dao.BannerDao;
 import com.btcd.dao.ProjectDaoImp;
 import com.btcd.dao.UserDao;
@@ -22,19 +23,20 @@ import java.util.Properties;
 @Service("indexService")
 public class IndexServiceImp implements IndexService{
 
+    @Autowired
+    private BannerDao bannerDao;
+    @Autowired
+    private UserDao userDao;
+    @Autowired
+    private StaticConf staticConf;
+    @Autowired
+    private ProjectDaoImp projectDao;
+
     // 发件人的 邮箱 和 授权码
     public static String myEmailAccount = "kxbk100@foxmail.com";
     public static String myEmailPassword = "yevvmjcahefbbfaf";
     // 发件人邮箱的 SMTP 服务器地址
     public static String myEmailSMTPHost = "smtp.qq.com";
-
-    @Autowired
-    private BannerDao bannerDao;
-    @Autowired
-    private UserDao userDao;
-
-    @Autowired
-    private ProjectDaoImp projectDao;
 
     @Override
     public void addBanner(String title, String path) {
@@ -51,7 +53,17 @@ public class IndexServiceImp implements IndexService{
 
     @Override
     public List<Project> findAllProject(){
-        return projectDao.findAll();
+        List<Project> projects = projectDao.findAll();
+        //判断状态
+        for(Project item:projects){
+            if(!item.getState().equals("准备中")){
+                int state = item.getEndTime().compareTo(new Date(System.currentTimeMillis()));
+                if(state<0){
+                    item.setState("已结束");
+                }
+            }
+        }
+        return projects;
     }
 
     @Override
@@ -67,7 +79,7 @@ public class IndexServiceImp implements IndexService{
         user.setPassword(password);
         user.setBalance(0);
         user.setFrozen(false);
-        user.setInvite(account);
+        user.setInvite(staticConf.confirmUrl+DigestUtils.md5DigestAsHex(account.getBytes()));
         user.setTime(new Date(System.currentTimeMillis()));
         user.setActivate(false);
         userDao.add(user);
@@ -125,6 +137,11 @@ public class IndexServiceImp implements IndexService{
     @Override
     public void updateUser(User user) {
         userDao.update(user);
+    }
+
+    @Override
+    public List<User> findAllUser() {
+        return userDao.findAll();
     }
 
     public MimeMessage createMimeMessage(Session session, String sendMail, String receiveMail,String url) throws Exception {

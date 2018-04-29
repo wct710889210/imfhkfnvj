@@ -15,4 +15,5 @@ public interface IndexService {
     public void sendEmail(String receiveMail);
     public User findUserByConfirm(String confirm);
     public void updateUser(User user);
+    public List<User> findAllUser();
 }

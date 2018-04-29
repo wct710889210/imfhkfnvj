@@ -1,4 +1,4 @@
-<%@page contentType="text/html; charset=utf-8" %>
+<%@page contentType="text/html; charset=UTF-8" %>
 <!DOCTYPE html>
 <!--[if IE 8]> <html class="ie ie8"> <![endif]-->
 <!--[if IE 9]> <html class="ie ie9"> <![endif]-->
@@ -33,58 +33,7 @@
 <body class="home">
 <div class="wrap">
   <!-- Header Start -->
-  <header id="header">
-    <!-- Main Header Start -->
-    <div class="main-header">
-      <div class="container">
-        <!-- TopNav Start -->
-        <div class="topnav navbar-header">
-          <a class="navbar-toggle down-button" data-toggle="collapse" data-target=".slidedown">
-            <i class="icon-angle-down icon-current"></i>
-          </a>
-        </div>
-        <!-- TopNav End -->
-        <!-- Logo Start -->
-        <div class="logo pull-left">
-          <h1>
-            <a href="index.html">
-              <img src="img/logo.png" alt="pixma" width="125" height="60">
-            </a>
-          </h1>
-        </div>
-        <!-- Logo End -->
-        <!-- Mobile Menu Start -->
-        <div class="mobile navbar-header">
-          <a class="navbar-toggle" data-toggle="collapse" href=".html">
-            <i class="icon-reorder icon-2x"></i>
-          </a>
-        </div>
-        <!-- Mobile Menu End -->
-        <!-- Menu Start -->
-        <nav class="collapse navbar-collapse menu">
-          <ul class="nav navbar-nav sf-menu">
-            <li>
-              <a href="index.html">首页</a>
-            </li>
-            <li>
-              <a href="bitclass.html">比特学堂</a>
-            </li>
-            <li>
-              <a href="#">糖果活动</a>
-            </li>
-            <li>
-              <a href="mine.html" id="current">用户中心</a>
-            </li>
-            <li>
-              <a href="about.html">关于我们</a>
-            </li>
-          </ul>
-        </nav>
-        <!-- Menu End -->
-      </div>
-    </div>
-    <!-- Main Header End -->
-  </header>
+  <%@include file="header.jsp"%>
   <!-- Header End -->
   <!-- Content Start -->
   <!-- Main Content start-->
@@ -122,7 +71,7 @@
                   <label>请输入邮箱:
                     <span>*</span>
                   </label>
-                  <input class="form-control" id="username" name="username" type="text" value="" required>
+                  <input class="form-control" id="account" name="account" type="text" value="" required>
                 </div>
               </div>
               <div class="row">
@@ -221,12 +170,12 @@
   });
 
   $('#login').on('click', function () {
-    var username = $('#username').val();
+    var account = $('#account').val();
     var password = $('#password').val();
-    console.log(username);
+    console.log(account);
     console.log(password);
     var Reg = /^[a-zA-Z0-9_-]+@([a-zA-Z0-9]+\.)+(com|cn|net|org)$/;
-    if (!Reg.test(username)) {
+    if (!Reg.test(account)) {
       $('#error').html('邮箱格式有误，请重新输入！');
       $('.alert').fadeIn(500, function () {
       });
@@ -235,11 +184,41 @@
       $('.alert').fadeIn(500, function () {
       });
     } else {
-      $('#error').html('密码有误，请重新输入！');
-      $('.alert').fadeIn(500, function () {
-      });
+        $('#error').html('正在进行登录验证，请稍等');
+        $('.alert').fadeIn(500, function () {
+        });
+        formSubmit();
     }
   })
+
+  function formSubmit() {
+      var text = "account=" + $("[name=account]").val().toString() + "&password=" + $("[name=password]").val().toString();
+      $.ajax({
+          data: text,
+          type: "post",
+          url: "/bitcandy/loginCheck",
+          success: function (response) {
+              if (response == "0") {
+                  $('#error').html('登录成功');
+                  $('.alert').fadeIn(500, function () {
+                  });
+                  setTimeout("window.location.href='/bitcandy/'", 1000);
+              }else if (response == "1") {
+                  $('#error').html('不存在此用户');
+                  $('.alert').fadeIn(500, function () {
+                  });
+              }else if(response == "2"){
+                  $('#error').html('密码错误');
+                  $('.alert').fadeIn(500, function () {
+                  });
+              }else if(response == "3"){
+                  $('#error').html('账号未激活');
+                  $('.alert').fadeIn(500, function () {
+                  });
+              }
+          }
+      })
+  }
 </script>
 
 </body>

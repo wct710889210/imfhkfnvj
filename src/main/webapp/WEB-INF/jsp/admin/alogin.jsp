@@ -1,3 +1,4 @@
+<%@page contentType="text/html; charset=utf-8" %>
 <!DOCTYPE html>
 <html class="no-js" lang="zh-cn">
 
@@ -9,29 +10,29 @@
 
     <!-- Stylesheets -->
     <!-- Bootstrap is included in its original form, unaltered -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="admin/css/bootstrap.min.css">
 
     <!-- Related styles of various icon packs and plugins -->
-    <link rel="stylesheet" href="css/plugins.css">
+    <link rel="stylesheet" href="admin/css/plugins.css">
 
     <!-- The main stylesheet of this template. All Bootstrap overwrites are defined in here -->
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="admin/css/main.css">
 
     <!-- Include a specific file here from css/themes/ folder to alter the default theme of the template -->
 
     <!-- The themes stylesheet of this template (for using specific theme color in individual elements - must included last) -->
-    <link rel="stylesheet" href="css/themes.css">
-    <link rel="shortcut icon" href="img/favicon.png">
+    <link rel="stylesheet" href="admin/css/themes.css">
+    <link rel="shortcut icon" href="admin/img/favicon.png">
     <!-- END Stylesheets -->
 
     <!-- Modernizr (browser feature detection library) -->
-    <script src="js/vendor/modernizr-3.3.1.min.js"></script>
+    <script src="admin/js/vendor/modernizr-3.3.1.min.js"></script>
   </head>
 
   <body>
     <!-- Full Background -->
     <!-- For best results use an image with a resolution of 1280x1280 pixels (prefer a blurred image for smaller file size) -->
-    <img src="img/bg.jpg" alt="Full Background" class="full-bg animation-pulseSlow">
+    <img src="admin/img/bg.jpg" alt="Full Background" class="full-bg animation-pulseSlow">
     <!-- END Full Background -->
 
     <!-- Login Container -->
@@ -51,11 +52,11 @@
         <!-- END Login Title -->
 
         <!-- Login Form -->
-        <form id="form-login" method="post" class="form-horizontal">
+        <form action="/bitcandy/adminLoginCheck" id="form-login" method="post" class="form-horizontal">
           <div class="form-group">
             <label for="login-email" class="col-xs-12">账号</label>
             <div class="col-xs-12">
-              <input type="text" id="username" name="username" class="form-control" required="required">
+              <input type="text" id="account" name="account" class="form-control" required="required">
             </div>
           </div>
           <div class="form-group">
@@ -90,10 +91,10 @@
     <!-- END Page Wrapper -->
 
     <!-- jQuery, Bootstrap, jQuery plugins and Custom JS code -->
-    <script src="js/vendor/jquery-2.2.4.min.js"></script>
-    <script src="js/vendor/bootstrap.min.js"></script>
-    <script src="js/plugins.js"></script>
-    <script src="js/app.js"></script>
+    <script src="admin/js/vendor/jquery-2.2.4.min.js"></script>
+    <script src="admin/js/vendor/bootstrap.min.js"></script>
+    <script src="admin/js/plugins.js"></script>
+    <script src="admin/js/app.js"></script>
   </body>
 
 </html>

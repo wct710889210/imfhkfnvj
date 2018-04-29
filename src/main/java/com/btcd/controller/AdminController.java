@@ -1,17 +1,23 @@
 package com.btcd.controller;
 
+import com.btcd.data.Admin;
 import com.btcd.data.Banner;
+import com.btcd.data.Bitclass;
 import com.btcd.data.Project;
 import com.btcd.service.AdminService;
+import com.btcd.service.IndexService;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Date;
@@ -20,46 +26,69 @@ import java.sql.Date;
 public class AdminController {
     @Autowired
     private AdminService adminService;
+    @Autowired
+    private IndexService indexService;
 
     @RequestMapping("/admin")
-    public String admin(){
+    public String admin(HttpSession session){
+        if(session.getAttribute("admin" )==null){
+            return null;
+        }
         return "admin/index";
     }
 
     @RequestMapping("bannerOn/{id}")
     @ResponseBody
-    public boolean bannerOn(@PathVariable("id")int id){
+    public boolean bannerOn(@PathVariable("id")int id,HttpSession session){
+        if(session.getAttribute("admin" )==null){
+            return false;
+        }
         adminService.bannerOn(id);
         return true;
     }
 
     @RequestMapping("bannerOff/{id}")
     @ResponseBody
-    public boolean bannerOff(@PathVariable("id")int id){
+    public boolean bannerOff(@PathVariable("id")int id,HttpSession session){
+        if(session.getAttribute("admin" )==null){
+            return false;
+        }
         adminService.bannerOff(id);
         return true;
     }
 
     @RequestMapping("/banner")
-    public String banner(){
+    public String banner(HttpSession session){
+        if(session.getAttribute("admin" )==null){
+            return null;
+        }
         return "admin/banner";
     }
 
     @RequestMapping("/bannerManage")
-    public String bannerManage(Model model){
+    public String bannerManage(Model model,HttpSession session){
+        if(session.getAttribute("admin" )==null){
+            return null;
+        }
         model.addAttribute("banners",adminService.findAllBanner());
         return "admin/abanner";
     }
 
     //banner的修改页面
     @RequestMapping("/bannerChange/{id}")
-    public String bannerChange(Model model,@PathVariable("id") int id){
+    public String bannerChange(HttpSession session,Model model,@PathVariable("id") int id){
+        if(session.getAttribute("admin" )==null){
+            return null;
+        }
         model.addAttribute("banner",adminService.findBannerById(id));
         return "admin/mbanner";
     }
 
     @RequestMapping("/bannerDelete/{id}")
-    public String bannerDelete(@PathVariable("id")int id){
+    public String bannerDelete(HttpSession session,@PathVariable("id")int id){
+        if(session.getAttribute("admin" )==null){
+            return null;
+        }
         Banner banner = adminService.findBannerById(id);
         File file = new File(banner.getPath());
         if(file.exists()){
@@ -71,7 +100,10 @@ public class AdminController {
 
     //banner的修改页面
     @RequestMapping("/bannerModify/{id}")
-    public String bannerModify(@PathVariable("id") int id,@RequestParam("description")String description,@RequestParam("image")MultipartFile file,HttpServletRequest request){
+    public String bannerModify(HttpSession session,@PathVariable("id") int id,@RequestParam("description")String description,@RequestParam("image")MultipartFile file,HttpServletRequest request){
+        if(session.getAttribute("admin" )==null){
+            return null;
+        }
         Banner banner = adminService.findBannerById(id);
         banner.setTitle(description);
         //如果文件不为空，写入上传路径
@@ -106,7 +138,10 @@ public class AdminController {
     //上传
     //TODO 限制上传类型
     @RequestMapping("/bannerUpload")
-    public String bannerUpload(@RequestParam("description") String description, HttpServletRequest request, @RequestParam("image")MultipartFile file){
+    public String bannerUpload(HttpSession session,@RequestParam("description") String description, HttpServletRequest request, @RequestParam("image")MultipartFile file){
+        if(session.getAttribute("admin" )==null){
+            return null;
+        }
         //如果文件不为空，写入上传路径
         if(!file.isEmpty()) {
             //上传文件路径
@@ -134,12 +169,18 @@ public class AdminController {
     }
 
     @RequestMapping("/activity")
-    public String activity(){
+    public String activity(HttpSession session){
+        if(session.getAttribute("admin" )==null){
+            return null;
+        }
         return "admin/activity";
     }
 
     @RequestMapping("/activityUpload")
-    public String activityUpload(String title, String content, String method, String address, String state, double price, Date endTime,boolean top, HttpServletRequest request, @RequestParam("image")MultipartFile file){
+    public String activityUpload(String title, String content, String method, String address, String state, double price, Date endTime,boolean top, HttpServletRequest request, @RequestParam("image")MultipartFile file,HttpSession session){
+        if(session.getAttribute("admin" )==null){
+            return null;
+        }
         //如果文件不为空，写入上传路径
         if(!file.isEmpty()) {
             //上传文件路径
@@ -167,13 +208,19 @@ public class AdminController {
     }
 
     @RequestMapping("activityManage")
-    public String activityManage(Model model){
+    public String activityManage(Model model,HttpSession session){
+        if(session.getAttribute("admin" )==null){
+            return null;
+        }
         model.addAttribute("projects",adminService.findAllProject());
         return "admin/aactivity";
     }
 
     @RequestMapping("activityDelete/{id}")
-    public String activityDelete(@PathVariable("id")int id){
+    public String activityDelete(@PathVariable("id")int id,HttpSession session){
+        if(session.getAttribute("admin" )==null){
+            return null;
+        }
         Project project = adminService.findProjectById(id);
         File file = new File(project.getPath());
         if(file.exists()){
@@ -184,13 +231,19 @@ public class AdminController {
     }
 
     @RequestMapping("activityChange/{id}")
-    public String activityChange(@PathVariable("id")int id,Model model){
+    public String activityChange(@PathVariable("id")int id,Model model,HttpSession session){
+        if(session.getAttribute("admin" )==null){
+            return null;
+        }
         model.addAttribute("project",adminService.findProjectById(id));
         return "admin/mactivity";
     }
 
     @RequestMapping("activityModify/{id}")
-    public String activityModify(@PathVariable("id")int id,String title, String content, String method, String address, String state, double price, Date endTime,boolean top, HttpServletRequest request, @RequestParam("image")MultipartFile file){
+    public String activityModify(HttpSession session,@PathVariable("id")int id,String title, String content, String method, String address, String state, double price, Date endTime,boolean top, HttpServletRequest request, @RequestParam("image")MultipartFile file){
+        if(session.getAttribute("admin" )==null){
+            return null;
+        }
         Project project = adminService.findProjectById(id);
         project.setTitle(title);
         project.setContent(content);
@@ -230,17 +283,93 @@ public class AdminController {
     }
 
     @RequestMapping("/class")
-    public String showClass(){
+    public String showClass(HttpSession session){
+        if(session.getAttribute("admin" )==null){
+            return null;
+        }
         return "admin/class";
     }
 
+    @RequestMapping("/classAdd")
+    public String classAdd(String title,String auth,@RequestParam("editorValue")String content,HttpSession session){
+        if(session.getAttribute("admin" )==null){
+            return null;
+        }
+        adminService.saveBitclass(title,auth,content);
+        return "redirect:/classManage";
+    }
+
     @RequestMapping("/classManage")
-    public String classManage(){
+    public String classManage(Model model,HttpSession session){
+        if(session.getAttribute("admin" )==null){
+            return null;
+        }
+        model.addAttribute("bitclasses",adminService.findAllBitclass());
         return "admin/aclass";
     }
 
-    @RequestMapping("/classChange")
-    public String classChange(){
+    @RequestMapping("/classChange/{id}")
+    public String classChange(@PathVariable("id")int id,Model model,HttpSession session){
+        if(session.getAttribute("admin" )==null){
+            return null;
+        }
+        model.addAttribute("bitclass",adminService.findBitclassById(id));
         return "admin/mclass";
+    }
+
+    @RequestMapping("/classModify/{id}")
+    public String classModify(@PathVariable("id")int id,String title,String auth,@RequestParam("editorValue")String content,HttpSession session){
+        if(session.getAttribute("admin" )==null){
+            return null;
+        }
+        Bitclass bitclass = adminService.findBitclassById(id);
+        bitclass.setTitle(title);
+        bitclass.setAuth(auth);
+        bitclass.setContent(content);
+        //修改时修改发布时间
+        bitclass.setTime(new Date(System.currentTimeMillis()));
+        adminService.updateBitclass(bitclass);
+        return "redirect:/classManage";
+    }
+
+    @RequestMapping("/classDelete/{id}")
+    public String classDelete(@PathVariable("id")int id,HttpSession session){
+        if(session.getAttribute("admin" )==null){
+            return null;
+        }
+        adminService.deleteBitclass(id);
+        return "redirect:/classManage";
+    }
+
+    @RequestMapping("/userList")
+    public String userList(Model model,HttpSession session){
+        if(session.getAttribute("admin" )==null){
+            return null;
+        }
+        model.addAttribute("users",indexService.findAllUser());
+        return "admin/user";
+    }
+
+    @RequestMapping("/adminLogin")
+    public String adminLogin(HttpSession session){
+        return "admin/alogin";
+    }
+
+    @RequestMapping("/adminLoginCheck")
+    public String adminLoginCheck(String account, String password, HttpSession session){
+        Admin search = adminService.findAdminByAccount(account);
+        if(search == null){
+            //不存在此用户
+            return "redirect:/adminLogin";
+        }else{
+            if(search.getPassword().equals(DigestUtils.md5DigestAsHex(password.getBytes()))){
+                session.setAttribute("admin",account);
+                //登录成功
+                return "redirect:/admin";
+            }else {
+                //密码错误
+                return "redirect:/adminLogin";
+            }
+        }
     }
 }
