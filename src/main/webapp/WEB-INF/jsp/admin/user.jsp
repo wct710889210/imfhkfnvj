@@ -308,6 +308,11 @@
     <script src="js/vendor/bootstrap.min.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/app.js"></script>
+    <script src="admin/js/pages/uiTables.js"></script>
+    <script>$(function () {
+                UiTables.init();
+            });
+    </script>
   </body>
 
 </html>

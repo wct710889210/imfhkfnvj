@@ -29,6 +29,7 @@
     <!-- Switcher CSS -->
     <link href="css/switcher.css" rel="stylesheet">
     <link href="css/spectrum.css" rel="stylesheet">
+    <link rel="shortcut icon" href="admin/img/favicon.png">
 
   </head>
 
@@ -50,7 +51,7 @@
             <div class="logo pull-left">
               <h1>
                 <a href="index.jsp">
-                <img src="img/logo.png" alt="pixma" width="125" height="60">
+                <img src="img/logo.png" alt="pixma" height="80">
               </a>
               </h1>
             </div>
