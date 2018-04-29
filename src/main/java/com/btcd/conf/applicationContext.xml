@@ -37,6 +37,8 @@
                 <value>com/btcd/data/Banner.hbm.xml</value>
                 <value>com/btcd/data/Project.hbm.xml</value>
                 <value>com/btcd/data/User.hbm.xml</value>
+                <value>com/btcd/data/Bitclass.hbm.xml</value>
+                <value>com/btcd/data/Admin.hbm.xml</value>
             </list>
         </property>
         <property name="hibernateProperties">
@@ -74,4 +76,6 @@
         <property name="username" value="710889210@qq.com"/>
         <property name="password" value="wlgzivfkpqqdbfjg"/>
     </bean>
+
+    <bean id="staticConf" class="com.btcd.conf.StaticConf"/>
 </beans>

@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html>
 <!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
@@ -33,58 +34,7 @@
   <body class="home">
     <div class="wrap">
       <!-- Header Start -->
-      <header id="header">
-        <!-- Main Header Start -->
-        <div class="main-header">
-          <div class="container">
-            <!-- TopNav Start -->
-            <div class="topnav navbar-header">
-              <a class="navbar-toggle down-button" data-toggle="collapse" data-target=".slidedown">
-                <i class="icon-angle-down icon-current"></i>
-              </a>
-            </div>
-            <!-- TopNav End -->
-            <!-- Logo Start -->
-            <div class="logo pull-left">
-              <h1>
-                <a href="index.jsp">
-                <img src="img/logo.png" alt="pixma" width="125" height="60">
-              </a>
-              </h1>
-            </div>
-            <!-- Logo End -->
-            <!-- Mobile Menu Start -->
-            <div class="mobile navbar-header">
-              <a class="navbar-toggle" data-toggle="collapse" href=".html">
-                <i class="icon-reorder icon-2x"></i>
-              </a>
-            </div>
-            <!-- Mobile Menu End -->
-            <!-- Menu Start -->
-            <nav class="collapse navbar-collapse menu">
-              <ul class="nav navbar-nav sf-menu">
-                <li>
-                  <a href="index.jsp">首页</a>
-                </li>
-                <li>
-                  <a href="bitclass.jsp" id="current">比特学堂</a>
-                </li>
-                <li>
-                  <a href="#">糖果活动</a>
-                </li>
-                <li>
-                  <a href="mine.jsp">用户中心</a>
-                </li>
-                <li>
-                  <a href="about.jsp">关于我们</a>
-                </li>
-              </ul>
-            </nav>
-            <!-- Menu End -->
-          </div>
-        </div>
-        <!-- Main Header End -->
-      </header>
+      <%@include file="header.jsp"%>
       <!-- Header End -->
       <!-- Title, Breadcrumb Start-->
 
@@ -105,6 +55,8 @@
         <div class="container">
           <div class="row">
             <div class="posts-block col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+              <c:forEach var="bitclass" items="${bitclasses}">
               <article class="post hentry">
                 <div class="post-content-wrap">
                   <header class="post-header">
@@ -114,142 +66,27 @@
                         <i>3月</i>
                       </a>
                     </div>
-                    <h3 class="content-title"><a href="#">糖果系列五：撸糖姿势大解析</a></h3>
+                    <h3 class="content-title"><a href="#">${bitclass.getTitle()}</a></h3>
                     <div class="blog-entry-meta">
                       <div class="blog-entry-meta-author">
                         <i class="icon-user"></i>
-                        <a class="blog-entry-meta-author">山姆哥</a>
+                        <a class="blog-entry-meta-author">${bitclass.getAuth()}</a>
                       </div>
                       <div class="blog-entry-meta-tags">
                         <i class="icon-time"></i>
-                        <a href="#" class="grey">2018-03-05 19:14</a>
+                        <a href="#" class="grey">${bitclass.getTime()}</a>
                       </div>
                     </div>
                   </header>
                   <div class="post-content">
-                    <p>
-                      上一篇我们介绍了分叉糖果和空投糖果两种形态。最适合比特币新兵撸的是“空投糖果”。目前获取糖果的发放，由简单到复杂有以下几类。 需要说明的是：“入门”→”基础”→”进阶”→”高级”→’’地狱”这五类仅仅描述了糖果获取的难度，与糖果价值无关。 </p>
+                    ${bitclass.getContent()}
                   </div>
                 </div>
                 <div class="clearfix"></div>
               </article>
               <div class="blog-divider"></div>
-              <article class="post hentry">
-                <div class="post-content-wrap">
-                  <header class="post-header">
-                    <div class="post-date">
-                      <a class="date" href="#">
-                        <strong>05</strong>
-                        <i>3月</i>
-                      </a>
-                    </div>
-                    <h3 class="content-title"><a href="#">糖果系列四：比特糖果——数字货币的免费午餐</a></h3>
-                    <div class="blog-entry-meta">
-                      <div class="blog-entry-meta-author">
-                        <i class="icon-user"></i>
-                        <a class="blog-entry-meta-author">山姆哥</a>
-                      </div>
-                      <div class="blog-entry-meta-tags">
-                        <i class="icon-time"></i>
-                        <a href="#" class="grey">2018-03-05 19:14</a>
-                      </div>
-                    </div>
-                  </header>
-                  <div class="post-content">
-                    <p>
-                      上一篇我们介绍了分叉糖果和空投糖果两种形态。最适合比特币新兵撸的是“空投糖果”。目前获取糖果的发放，由简单到复杂有以下几类。 需要说明的是：“入门”→”基础”→”进阶”→”高级”→’’地狱”这五类仅仅描述了糖果获取的难度，与糖果价值无关。 </p>
-                  </div>
-                </div>
-                <div class="clearfix"></div>
-              </article>
-              <div class="blog-divider"></div>
-              <article class="post hentry">
-                <div class="post-content-wrap">
-                  <header class="post-header">
-                    <div class="post-date">
-                      <a class="date" href="#">
-                        <strong>05</strong>
-                        <i>3月</i>
-                      </a>
-                    </div>
-                    <h3 class="content-title"><a href="#">糖果系列三：直面机遇——积极了解、适度参与</a></h3>
-                    <div class="blog-entry-meta">
-                      <div class="blog-entry-meta-author">
-                        <i class="icon-user"></i>
-                        <a class="blog-entry-meta-author">山姆哥</a>
-                      </div>
-                      <div class="blog-entry-meta-tags">
-                        <i class="icon-time"></i>
-                        <a href="#" class="grey">2018-03-05 19:14</a>
-                      </div>
-                    </div>
-                  </header>
-                  <div class="post-content">
-                    <p>
-                      上一篇我们介绍了分叉糖果和空投糖果两种形态。最适合比特币新兵撸的是“空投糖果”。目前获取糖果的发放，由简单到复杂有以下几类。 需要说明的是：“入门”→”基础”→”进阶”→”高级”→’’地狱”这五类仅仅描述了糖果获取的难度，与糖果价值无关。 </p>
-                  </div>
-                </div>
-                <div class="clearfix"></div>
-              </article>
-              <div class="blog-divider"></div>
-              <article class="post hentry">
-                <div class="post-content-wrap">
-                  <header class="post-header">
-                    <div class="post-date">
-                      <a class="date" href="#">
-                        <strong>05</strong>
-                        <i>3月</i>
-                      </a>
-                    </div>
-                    <h3 class="content-title"><a href="#">糖果系列二：那些年我们错过的暴富机会</a></h3>
-                    <div class="blog-entry-meta">
-                      <div class="blog-entry-meta-author">
-                        <i class="icon-user"></i>
-                        <a class="blog-entry-meta-author">山姆哥</a>
-                      </div>
-                      <div class="blog-entry-meta-tags">
-                        <i class="icon-time"></i>
-                        <a href="#" class="grey">2018-03-05 19:14</a>
-                      </div>
-                    </div>
-                  </header>
-                  <div class="post-content">
-                    <p>
-                      上一篇我们介绍了分叉糖果和空投糖果两种形态。最适合比特币新兵撸的是“空投糖果”。目前获取糖果的发放，由简单到复杂有以下几类。 需要说明的是：“入门”→”基础”→”进阶”→”高级”→’’地狱”这五类仅仅描述了糖果获取的难度，与糖果价值无关。 </p>
-                  </div>
-                </div>
-                <div class="clearfix"></div>
-              </article>
-              <div class="blog-divider"></div>
-              <article class="post hentry">
-                <div class="post-content-wrap">
-                  <header class="post-header">
-                    <div class="post-date">
-                      <a class="date" href="#">
-                        <strong>05</strong>
-                        <i>3月</i>
-                      </a>
-                    </div>
-                    <h3 class="content-title"><a href="#">糖果系列一：数字货币——是骗局还是机遇？</a></h3>
-                    <div class="blog-entry-meta">
-                      <div class="blog-entry-meta-author">
-                        <i class="icon-user"></i>
-                        <a class="blog-entry-meta-author">山姆哥</a>
-                      </div>
-                      <div class="blog-entry-meta-tags">
-                        <i class="icon-time"></i>
-                        <a href="#" class="grey">2018-03-05 19:14</a>
-                      </div>
-                    </div>
-                  </header>
-                  <div class="post-content">
-                    <p>
-                      上一篇我们介绍了分叉糖果和空投糖果两种形态。最适合比特币新兵撸的是“空投糖果”。目前获取糖果的发放，由简单到复杂有以下几类。 需要说明的是：“入门”→”基础”→”进阶”→”高级”→’’地狱”这五类仅仅描述了糖果获取的难度，与糖果价值无关。 </p>
-                  </div>
-                </div>
-                <div class="clearfix"></div>
-              </article>
-              <div class="blog-divider"></div>
+              </c:forEach>
+
               <div class="pagination-centered">
                 <ul class="pagination">
                   <li class="disabled"><a href="#">«</a></li>
