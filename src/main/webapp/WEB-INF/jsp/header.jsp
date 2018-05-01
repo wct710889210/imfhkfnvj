@@ -13,15 +13,15 @@
             <!-- Logo Start -->
             <div class="logo pull-left">
                 <h1>
-                    <a href="index.jsp">
-                        <img src="/bitcandy/img/logo.png" alt="pixma" width="125" height="60">
+                    <a href="/bitcandy/">
+                        <img src="/bitcandy/img/logo.png" height="80">
                     </a>
                 </h1>
             </div>
             <!-- Logo End -->
             <!-- Mobile Menu Start -->
             <div class="mobile navbar-header">
-                <a class="navbar-toggle" data-toggle="collapse" href=".html">
+                <a class="navbar-toggle" data-toggle="collapse" href="#">
                     <i class="icon-reorder icon-2x"></i>
                 </a>
             </div>
