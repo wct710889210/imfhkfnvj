@@ -89,6 +89,7 @@
                     <input type="text" id="example-text-input" name="description" class="form-control">
                   </div>
                 </div>
+
                 <div class="form-group">
                   <label class="col-md-3 control-label" for="example-file-input">上传新轮播图</label>
                   <div class="col-md-9">
@@ -98,6 +99,7 @@
                     </a>
                   </div>
                 </div>
+
                 <div class="form-group form-actions">
                   <div class="col-md-9 col-md-offset-3">
                     <button type="submit" class="btn btn-effect-ripple btn-primary">发布</button>
