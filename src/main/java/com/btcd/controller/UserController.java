@@ -50,11 +50,12 @@ public class UserController {
         User user = indexService.findUserByConfirm(key);
         if(user == null){
             //无效
+            return null;
         }else{
             user.setActivate(true);
             indexService.updateUser(user);
+            return "redirect:/success";
         }
-        return "redirect:/success";
     }
 
     @RequestMapping("/success")

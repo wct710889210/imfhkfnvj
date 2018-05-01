@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.sql.Date;
 
 @Controller
@@ -32,7 +33,7 @@ public class AdminController {
     @RequestMapping("/admin")
     public String admin(HttpSession session){
         if(session.getAttribute("admin" )==null){
-            return null;
+            return "redirect:/adminLogin";
         }
         return "admin/index";
     }
@@ -60,7 +61,7 @@ public class AdminController {
     @RequestMapping("/banner")
     public String banner(HttpSession session){
         if(session.getAttribute("admin" )==null){
-            return null;
+            return "redirect:/adminLogin";
         }
         return "admin/banner";
     }
@@ -68,7 +69,7 @@ public class AdminController {
     @RequestMapping("/bannerManage")
     public String bannerManage(Model model,HttpSession session){
         if(session.getAttribute("admin" )==null){
-            return null;
+            return "redirect:/adminLogin";
         }
         model.addAttribute("banners",adminService.findAllBanner());
         return "admin/abanner";
@@ -78,7 +79,7 @@ public class AdminController {
     @RequestMapping("/bannerChange/{id}")
     public String bannerChange(HttpSession session,Model model,@PathVariable("id") int id){
         if(session.getAttribute("admin" )==null){
-            return null;
+            return "redirect:/adminLogin";
         }
         model.addAttribute("banner",adminService.findBannerById(id));
         return "admin/mbanner";
@@ -87,7 +88,7 @@ public class AdminController {
     @RequestMapping("/bannerDelete/{id}")
     public String bannerDelete(HttpSession session,@PathVariable("id")int id){
         if(session.getAttribute("admin" )==null){
-            return null;
+            return "redirect:/adminLogin";
         }
         Banner banner = adminService.findBannerById(id);
         File file = new File(banner.getPath());
@@ -102,23 +103,25 @@ public class AdminController {
     @RequestMapping("/bannerModify/{id}")
     public String bannerModify(HttpSession session,@PathVariable("id") int id,@RequestParam("description")String description,@RequestParam("image")MultipartFile file,HttpServletRequest request){
         if(session.getAttribute("admin" )==null){
-            return null;
+            return "redirect:/adminLogin";
         }
         Banner banner = adminService.findBannerById(id);
         banner.setTitle(description);
         //如果文件不为空，写入上传路径
         if(!file.isEmpty()) {
             //上传文件路径
-            String path = request.getServletContext().getRealPath("static/uploadFiles/banners");
+            String path =  request.getServletContext().getRealPath("static"+File.separator+"uploadFiles"+File.separator+"banners");
             //上传文件名
             String filename = file.getOriginalFilename();
             File filepath = new File(path,filename);
+            filepath.setWritable(true,false);
             //判断路径是否存在，如果不存在就创建一个
             if (!filepath.getParentFile().exists()) {
                 filepath.getParentFile().mkdirs();
             }
             //将上传文件保存到一个目标文件当中
             File ultiPath = new File(path + File.separator + adminService.generateRandomFilename()+filename.substring(filename.lastIndexOf(".")+1));
+            ultiPath.setWritable(true,false);
             try {
                 file.transferTo(ultiPath);
             } catch (IOException e) {
@@ -140,27 +143,30 @@ public class AdminController {
     @RequestMapping("/bannerUpload")
     public String bannerUpload(HttpSession session,@RequestParam("description") String description, HttpServletRequest request, @RequestParam("image")MultipartFile file){
         if(session.getAttribute("admin" )==null){
-            return null;
+            return "redirect:/adminLogin";
         }
         //如果文件不为空，写入上传路径
         if(!file.isEmpty()) {
             //上传文件路径
-            String path = request.getServletContext().getRealPath("static/uploadFiles/banners");
+            //String path = request.getServletContext().getRealPath("static"+File.separator+"uploadFiles"+File.separator+"banners");
+            String path = File.separator+"user"+File.separator+"uploadFiles"+File.separator+"banners";
             //上传文件名
             String filename = file.getOriginalFilename();
             File filepath = new File(path,filename);
+            filepath.setWritable(true,false);
             //判断路径是否存在，如果不存在就创建一个
             if (!filepath.getParentFile().exists()) {
                 filepath.getParentFile().mkdirs();
             }
             //将上传文件保存到一个目标文件当中
             File ultiPath = new File(path + File.separator + adminService.generateRandomFilename()+filename.substring(filename.lastIndexOf(".")+1));
+            ultiPath.setWritable(true,false);
             try {
                 file.transferTo(ultiPath);
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            adminService.saveBanner(description,ultiPath.getPath().substring(ultiPath.getPath().indexOf("uploadFiles")));
+            adminService.saveBanner(description,ultiPath.getPath());
         } else {
             //TODO 文件为空时的情况（未完成）
             return "redirect:/bannerManage";
@@ -171,7 +177,7 @@ public class AdminController {
     @RequestMapping("/activity")
     public String activity(HttpSession session){
         if(session.getAttribute("admin" )==null){
-            return null;
+            return "redirect:/adminLogin";
         }
         return "admin/activity";
     }
@@ -179,21 +185,23 @@ public class AdminController {
     @RequestMapping("/activityUpload")
     public String activityUpload(String title, String content, String method, String address, String state, double price, Date endTime,boolean top, HttpServletRequest request, @RequestParam("image")MultipartFile file,HttpSession session){
         if(session.getAttribute("admin" )==null){
-            return null;
+            return "redirect:/adminLogin";
         }
         //如果文件不为空，写入上传路径
         if(!file.isEmpty()) {
             //上传文件路径
-            String path = request.getServletContext().getRealPath("static/uploadFiles/projects");
+            String path = request.getServletContext().getRealPath("static"+File.separator+"uploadFiles"+File.separator+"projects");
             //上传文件名
             String filename = file.getOriginalFilename();
             File filepath = new File(path,filename);
+            filepath.setWritable(true,false);
             //判断路径是否存在，如果不存在就创建一个
             if (!filepath.getParentFile().exists()) {
                 filepath.getParentFile().mkdirs();
             }
             //将上传文件保存到一个目标文件当中
             File ultiPath = new File(path + File.separator + adminService.generateRandomFilename()+filename.substring(filename.lastIndexOf(".")+1));
+            ultiPath.setWritable(true,false);
             try {
                 file.transferTo(ultiPath);
             } catch (IOException e) {
@@ -210,7 +218,7 @@ public class AdminController {
     @RequestMapping("activityManage")
     public String activityManage(Model model,HttpSession session){
         if(session.getAttribute("admin" )==null){
-            return null;
+            return "redirect:/adminLogin";
         }
         model.addAttribute("projects",adminService.findAllProject());
         return "admin/aactivity";
@@ -219,7 +227,7 @@ public class AdminController {
     @RequestMapping("activityDelete/{id}")
     public String activityDelete(@PathVariable("id")int id,HttpSession session){
         if(session.getAttribute("admin" )==null){
-            return null;
+            return "redirect:/adminLogin";
         }
         Project project = adminService.findProjectById(id);
         File file = new File(project.getPath());
@@ -233,7 +241,7 @@ public class AdminController {
     @RequestMapping("activityChange/{id}")
     public String activityChange(@PathVariable("id")int id,Model model,HttpSession session){
         if(session.getAttribute("admin" )==null){
-            return null;
+            return "redirect:/adminLogin";
         }
         model.addAttribute("project",adminService.findProjectById(id));
         return "admin/mactivity";
@@ -242,7 +250,7 @@ public class AdminController {
     @RequestMapping("activityModify/{id}")
     public String activityModify(HttpSession session,@PathVariable("id")int id,String title, String content, String method, String address, String state, double price, Date endTime,boolean top, HttpServletRequest request, @RequestParam("image")MultipartFile file){
         if(session.getAttribute("admin" )==null){
-            return null;
+            return "redirect:/adminLogin";
         }
         Project project = adminService.findProjectById(id);
         project.setTitle(title);
@@ -256,16 +264,18 @@ public class AdminController {
         //如果文件不为空，写入上传路径
         if(!file.isEmpty()) {
             //上传文件路径
-            String path = request.getServletContext().getRealPath("static/uploadFiles/projects");
+            String path = request.getServletContext().getRealPath("static"+File.separator+"uploadFiles"+File.separator+"projects");
             //上传文件名
             String filename = file.getOriginalFilename();
             File filepath = new File(path,filename);
+            filepath.setWritable(true,false);
             //判断路径是否存在，如果不存在就创建一个
             if (!filepath.getParentFile().exists()) {
                 filepath.getParentFile().mkdirs();
             }
             //将上传文件保存到一个目标文件当中
             File ultiPath = new File(path + File.separator + adminService.generateRandomFilename()+filename.substring(filename.lastIndexOf(".")+1));
+            ultiPath.setWritable(true,false);
             try {
                 file.transferTo(ultiPath);
             } catch (IOException e) {
@@ -285,7 +295,7 @@ public class AdminController {
     @RequestMapping("/class")
     public String showClass(HttpSession session){
         if(session.getAttribute("admin" )==null){
-            return null;
+            return "redirect:/adminLogin";
         }
         return "admin/class";
     }
@@ -293,7 +303,7 @@ public class AdminController {
     @RequestMapping("/classAdd")
     public String classAdd(String title,String auth,@RequestParam("editorValue")String content,HttpSession session){
         if(session.getAttribute("admin" )==null){
-            return null;
+            return "redirect:/adminLogin";
         }
         adminService.saveBitclass(title,auth,content);
         return "redirect:/classManage";
@@ -302,7 +312,7 @@ public class AdminController {
     @RequestMapping("/classManage")
     public String classManage(Model model,HttpSession session){
         if(session.getAttribute("admin" )==null){
-            return null;
+            return "redirect:/adminLogin";
         }
         model.addAttribute("bitclasses",adminService.findAllBitclass());
         return "admin/aclass";
@@ -311,7 +321,7 @@ public class AdminController {
     @RequestMapping("/classChange/{id}")
     public String classChange(@PathVariable("id")int id,Model model,HttpSession session){
         if(session.getAttribute("admin" )==null){
-            return null;
+            return "redirect:/adminLogin";
         }
         model.addAttribute("bitclass",adminService.findBitclassById(id));
         return "admin/mclass";
@@ -320,7 +330,7 @@ public class AdminController {
     @RequestMapping("/classModify/{id}")
     public String classModify(@PathVariable("id")int id,String title,String auth,@RequestParam("editorValue")String content,HttpSession session){
         if(session.getAttribute("admin" )==null){
-            return null;
+            return "redirect:/adminLogin";
         }
         Bitclass bitclass = adminService.findBitclassById(id);
         bitclass.setTitle(title);
@@ -335,7 +345,7 @@ public class AdminController {
     @RequestMapping("/classDelete/{id}")
     public String classDelete(@PathVariable("id")int id,HttpSession session){
         if(session.getAttribute("admin" )==null){
-            return null;
+            return "redirect:/adminLogin";
         }
         adminService.deleteBitclass(id);
         return "redirect:/classManage";
@@ -344,7 +354,7 @@ public class AdminController {
     @RequestMapping("/userList")
     public String userList(Model model,HttpSession session){
         if(session.getAttribute("admin" )==null){
-            return null;
+            return "redirect:/adminLogin";
         }
         model.addAttribute("users",indexService.findAllUser());
         return "admin/user";

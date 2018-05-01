@@ -79,7 +79,7 @@ public class IndexServiceImp implements IndexService{
         user.setPassword(password);
         user.setBalance(0);
         user.setFrozen(false);
-        user.setInvite(staticConf.confirmUrl+DigestUtils.md5DigestAsHex(account.getBytes()));
+        user.setInvite(staticConf.inviteUrl+DigestUtils.md5DigestAsHex(account.getBytes()));
         user.setTime(new Date(System.currentTimeMillis()));
         user.setActivate(false);
         userDao.add(user);
@@ -109,7 +109,7 @@ public class IndexServiceImp implements IndexService{
             session.setDebug(true);                                 // 设置为debug模式, 可以查看详细的发送 log
 
             // 3. 创建一封邮件
-            String url = "http://localhost:8080/BitCandy/confirm?key="+DigestUtils.md5DigestAsHex(receiveMail.getBytes());		//创建验证url
+            String url = staticConf.confirmUrl+DigestUtils.md5DigestAsHex(receiveMail.getBytes());		//创建验证url
             MimeMessage message = createMimeMessage(session, myEmailAccount, receiveMail,url);
 
             // 4. 根据 Session 获取邮件传输对象

@@ -4,7 +4,7 @@
     <!-- Sidebar Brand -->
     <div id="sidebar-brand" class="themed-background text-center">
         <a href="index.html" class="sidebar-title">
-            <img src="admin/img/logo.png" width="25%">
+            <img src="/bitcandy/admin/img/logo.png" width="25%">
             <strong>比特糖果</strong>
         </a>
     </div>
