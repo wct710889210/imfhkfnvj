@@ -125,12 +125,36 @@
                           <i class="fa fa-pencil">
                           </i>
                         </a>
-                        <a onclick="return del()" href="classDelete/${bitclass.getId()}" data-toggle="tooltip" title="删除" class="btn btn-effect-ripple btn-xs btn-danger">
-                          <i class="fa fa-times">
-                          </i>
+                        <a href="#modal-compose" data-toggle="modal" title="删除"
+                           class="btn btn-effect-ripple btn-xs btn-danger">
+                          <i class="fa fa-times"></i>
                         </a>
                       </td>
                     </tr>
+
+                    <div id="modal-compose" class="modal fade" tabindex="-1" role="dialog"
+                         aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h3 class="modal-title">
+                              <strong>确认操作</strong>
+                            </h3>
+                          </div>
+                          <div class="modal-body">
+                            <div class="form-group">
+                              <div class="col-xs-6">
+                                <span>是否确认删除？</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <a class="btn btn-effect-ripple btn-danger" href="activityDelete/${bitclass.getId()}">删除</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </c:forEach>
                   </tbody>
                 </table>

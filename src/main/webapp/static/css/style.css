@@ -2567,3 +2567,11 @@ footer a,.contact-box:hover,#options li a.selected,header .top-bar,header .top-b
 .mine {
     margin: 40px 0 70px;
 }
+
+.user {
+    line-height: 80px;
+}
+
+.title.mine {
+    display: inline-block;
+}

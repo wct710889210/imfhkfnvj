@@ -59,14 +59,27 @@
           <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12 col-lg-offset-2 col-md-offset-2 col-sm-offset-3">
             <div class="row">
               <div class="col-md-8 col-md-offset-2">
-                <div class="alert alert-danger alert-dismissible" role="alert" style="display:none">
-                  <button type="button" class="close">
+                <div class="alert alert-danger alert-dismissible error" role="alert" style="display:none">
+                  <button type="button" class="close errorclose">
                     <span aria-hidden="true">&times;</span>
                   </button>
                   <strong>错误!</strong>
                   <span id="error"></span>
                 </div>
               </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-8 col-md-offset-2">
+                <div class="alert alert-success alert-dismissible success" role="alert" style="display:none">
+                  <button type="button" class="close successclose">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <strong>恭喜!</strong>
+                  <span id="success"></span>
+                </div>
+              </div>
+            </div>
               
             <form method="post" class="reply" id="contact">
               <div class="row">
@@ -174,10 +187,15 @@
 <script src="js/switcher.js"></script>
 <script src="js/custom.js"></script>
 <script>
-  $('.close').on('click', function () {
-    $('.alert').fadeOut(500, function () {
+    $('.errorclose').on('click', function () {
+        $('.error').fadeOut(500, function () {
+        });
     });
-  });
+
+    $('.successclose').on('click', function () {
+        $('.success').fadeOut(500, function () {
+        });
+    });
 
   $('#register').on('click', function () {
       var account = $('#account').val();
@@ -189,19 +207,19 @@
       var Reg = /^[a-zA-Z0-9_-]+@([a-zA-Z0-9]+\.)+(com|cn|net|org)$/;
       if (!Reg.test(account)) {
           $('#error').html('邮箱格式有误，请重新输入！');
-          $('.alert').fadeIn(500, function () {
+          $('.error').fadeIn(500, function () {
           });
       } else if (password == '' || repassword == '') {
           $('#error').html('密码不能为空，请重新输入！');
-          $('.alert').fadeIn(500, function () {
+          $('.error').fadeIn(500, function () {
           });
       } else if (password != repassword) {
           $('#error').html('两次输入密码不一致，请重新输入！');
-          $('.alert').fadeIn(500, function () {
+          $('.error').fadeIn(500, function () {
           });
       }else{
-          $('#error').html('正在进行注册验证，请稍等');
-          $('.alert').fadeIn(500, function () {
+          $('#success').html('正在进行注册验证，请稍等');
+          $('.success').fadeIn(500, function () {
           });
           formSubmit();
       }
@@ -216,11 +234,11 @@
           success: function (response) {
               if (response == "1") {
                   $('#error').html('该邮箱已被占用');
-                  $('.alert').fadeIn(500, function () {
+                  $('.error').fadeIn(500, function () {
                   });
               } else if (response == "0") {
-                  $('#error').html('注册成功，请登录邮箱激活');
-                  $('.alert').fadeIn(500, function () {
+                  $('#success').html('注册成功，请登录邮箱激活');
+                  $('.success').fadeIn(500, function () {
                   });
                   setTimeout("window.location.href='login'", 2000);
               }
