@@ -74,7 +74,7 @@
                   data-x="600">
                   <div class="list-slide">
                     <i class="icon-code slide-icon"></i>
-                    <h5 class="dblue">比特糖果 </h5>
+                    <h5 class="dblue">比特糖果</h5>
                   </div>
                 </div>
               </li>

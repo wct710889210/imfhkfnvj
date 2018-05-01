@@ -41,8 +41,9 @@
         <div class="breadcrumb-wrapper">
           <div class="container">
             <div class="row">
-              <div class="col-lg-6 col-md-6 col-xs-12 col-sm-6">
-                <h2 class="title">用户中心</h2>
+              <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+                <h2 class="title mine">用户中心</h2>
+                <span class="pull-right user">欢迎您，${user.getAccount()} <a href="#"> 注销</a></span>
               </div>
 
             </div>
@@ -53,7 +54,6 @@
         <div class="content">
           <div class="container">
             <div class="row">
-
               <div class="posts-block col-lg-10 col-md-8 col-sm-8 col-xs-12 col-lg-offset-1">
                 <div class="row">
                   <div class="col-md-9">
@@ -63,7 +63,6 @@
                           <i class="icon-bitcoin icon-2x white wellleft"></i>
                         </div>
                         <div class="col-md-6">
-                          ${user.getAccount()}
                           <div class="text-center white wellright">${user.getBalance()}</div>
                           <div class="text-center white wellrightbt">
                             <c:if test="${user.isFrozen()}">

@@ -107,7 +107,7 @@
                 </div>
                 <div class="form-group">
                   <label class="col-md-3 control-label" for="example-textarea-input">内容</label>
-                  <div class="col-md-6">
+                  <div class="col-md-7">
                     <script id="editor" type="text/plain" style="height:300px;">${bitclass.getContent()}</script>
                   </div>
                 </div>
