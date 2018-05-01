@@ -96,7 +96,7 @@
               <tbody>
               <c:forEach var="project" items="${projects}">
                 <tr>
-                  <td class="text-center">序号递增显示</td>
+                  <td class="text-center">${project.getId()}</td>
                   <td class="text-center">${project.getTitle()}</td>
                   <td class="text-center">${project.getEndTime()}</td>
                   <td class="text-center">${project.getState()}</td>
@@ -113,14 +113,14 @@
                        class="btn btn-effect-ripple btn-xs btn-success">
                       <i class="fa fa-pencil"></i>
                     </a>
-                    <a href="#modal-compose" data-toggle="modal" title="删除"
+                    <a href="#modal-compose${project.getId()}" data-toggle="modal" title="删除"
                        class="btn btn-effect-ripple btn-xs btn-danger">
                       <i class="fa fa-times"></i>
                     </a>
                   </td>
                 </tr>
 
-                <div id="modal-compose" class="modal fade" tabindex="-1" role="dialog"
+                <div id="modal-compose${project.getId()}" class="modal fade" tabindex="-1" role="dialog"
                      aria-hidden="true">
                   <div class="modal-dialog">
                     <div class="modal-content">

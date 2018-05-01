@@ -97,7 +97,7 @@
 
                 </div>
 
-                <div class="row">
+                <!--<div class="row">
                   <div class="mine">
                     <h3 class="title" style="margin-top: 30px;">已邀请好友</h3>
                     <table class="table table-striped table-bordered text-center">
@@ -128,7 +128,7 @@
                     </table>
                   </div>
                 </div>
-              </div>
+              </div>-->
               <!-- Left Section End -->
             </div>
 

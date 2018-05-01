@@ -97,7 +97,7 @@
               <tbody>
               <c:forEach var="banner" items="${banners}">
                 <tr>
-                  <td class="text-center">序号递增显示</td>
+                  <td class="text-center">${banner.getId()}</td>
                   <td class="text-center">${banner.getTitle()}</td>
                   <td class="text-center">
                       <a href="img/1.jpg" data-toggle="lightbox-image">
@@ -115,14 +115,14 @@
                        class="btn btn-effect-ripple btn-xs btn-success">
                       <i class="fa fa-pencil"></i>
                     </a>
-                    <a href="#modal-compose" data-toggle="modal" title="删除"
+                    <a href="#modal-compose${banner.getId()}" data-toggle="modal" title="删除"
                        class="btn btn-effect-ripple btn-xs btn-danger">
                       <i class="fa fa-times"></i>
                     </a>
                   </td>
                 </tr>
 
-                <div id="modal-compose" class="modal fade" tabindex="-1" role="dialog"
+                <div id="modal-compose${banner.getId()}" class="modal fade" tabindex="-1" role="dialog"
                      aria-hidden="true">
                   <div class="modal-dialog">
                     <div class="modal-content">

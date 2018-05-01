@@ -22,6 +22,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.sql.Date;
+import java.util.regex.Pattern;
 
 @Controller
 public class AdminController {
@@ -110,7 +111,8 @@ public class AdminController {
         //如果文件不为空，写入上传路径
         if(!file.isEmpty()) {
             //上传文件路径
-            String path =  request.getServletContext().getRealPath("static"+File.separator+"uploadFiles"+File.separator+"banners");
+            //String path =  request.getServletContext().getRealPath("static"+File.separator+"uploadFiles"+File.separator+"banners");
+            String path = File.separator+"home"+File.separator+"tomcat"+File.separator+"apache-tomcat-default"+File.separator+"webapps"+File.separator+"bitcandy"+File.separator+"static"+File.separator+"uploadFiles"+File.separator+"banners";
             //上传文件名
             String filename = file.getOriginalFilename();
             File filepath = new File(path,filename);
@@ -149,7 +151,7 @@ public class AdminController {
         if(!file.isEmpty()) {
             //上传文件路径
             //String path = request.getServletContext().getRealPath("static"+File.separator+"uploadFiles"+File.separator+"banners");
-            String path = File.separator+"user"+File.separator+"uploadFiles"+File.separator+"banners";
+            String path = File.separator+"home"+File.separator+"tomcat"+File.separator+"apache-tomcat-default"+File.separator+"webapps"+File.separator+"bitcandy"+File.separator+"static"+File.separator+"uploadFiles"+File.separator+"banners";
             //上传文件名
             String filename = file.getOriginalFilename();
             File filepath = new File(path,filename);
@@ -166,7 +168,7 @@ public class AdminController {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            adminService.saveBanner(description,ultiPath.getPath());
+            adminService.saveBanner(description,ultiPath.getPath().substring(ultiPath.getPath().indexOf("uploadFiles")));
         } else {
             //TODO 文件为空时的情况（未完成）
             return "redirect:/bannerManage";
@@ -190,7 +192,7 @@ public class AdminController {
         //如果文件不为空，写入上传路径
         if(!file.isEmpty()) {
             //上传文件路径
-            String path = request.getServletContext().getRealPath("static"+File.separator+"uploadFiles"+File.separator+"projects");
+            String path = File.separator+"home"+File.separator+"tomcat"+File.separator+"apache-tomcat-default"+File.separator+"webapps"+File.separator+"bitcandy"+File.separator+"static"+File.separator+"uploadFiles"+File.separator+"projects";
             //上传文件名
             String filename = file.getOriginalFilename();
             File filepath = new File(path,filename);
@@ -264,7 +266,7 @@ public class AdminController {
         //如果文件不为空，写入上传路径
         if(!file.isEmpty()) {
             //上传文件路径
-            String path = request.getServletContext().getRealPath("static"+File.separator+"uploadFiles"+File.separator+"projects");
+            String path = File.separator+"home"+File.separator+"tomcat"+File.separator+"apache-tomcat-default"+File.separator+"webapps"+File.separator+"bitcandy"+File.separator+"static"+File.separator+"uploadFiles"+File.separator+"projects";
             //上传文件名
             String filename = file.getOriginalFilename();
             File filepath = new File(path,filename);
@@ -382,4 +384,6 @@ public class AdminController {
             }
         }
     }
+
+
 }
