@@ -97,8 +97,8 @@
                   <label class="col-md-3 control-label" for="example-file-input">活动图片</label>
                   <div class="col-md-9">
                     <input type="file" id="example-file-input" name="image">
-                    <a href="img/1.jpg" data-toggle="lightbox-image">
-                      <img src="img/1.jpg" height="200" style="margin: 10px 5px">
+                    <a href="../${project.getPath()}" data-toggle="lightbox-image">
+                      <img src="../${project.getPath()}" height="200" style="margin: 10px 5px">
                     </a>
                   </div>
                 </div>

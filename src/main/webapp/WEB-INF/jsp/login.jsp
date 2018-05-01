@@ -88,7 +88,7 @@
               <div class="row">
                 <div class="col-lg-6 col-xs-12 col-lg-offset-3 text-center">
                   <a class="btn-color btn-small btn-pad left" href="#" id="login">登录</a>
-                  <a class="btn-grey btn-small btn-pad" href="register.html">注册</a>
+                  <a class="btn-grey btn-small btn-pad" href="register">注册</a>
                 </div>
               </div>
 
@@ -205,7 +205,7 @@
                   $('#error').html('登录成功');
                   $('.alert').fadeIn(500, function () {
                   });
-                  setTimeout("window.location.href='/bitcandy/'", 1000);
+                  setTimeout("window.location.href='/bitcandy/mine'", 1000);
               }else if (response == "1") {
                   $('#error').html('不存在此用户');
                   $('.alert').fadeIn(500, function () {

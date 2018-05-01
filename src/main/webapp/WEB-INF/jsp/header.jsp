@@ -14,7 +14,7 @@
             <div class="logo pull-left">
                 <h1>
                     <a href="index.jsp">
-                        <img src="img/logo.png" alt="pixma" width="125" height="60">
+                        <img src="/bitcandy/img/logo.png" alt="pixma" width="125" height="60">
                     </a>
                 </h1>
             </div>
@@ -30,19 +30,19 @@
             <nav class="collapse navbar-collapse menu">
                 <ul class="nav navbar-nav sf-menu">
                     <li>
-                        <a href="/bitcandy/" id="current">首页</a>
+                        <a href="/bitcandy/">首页</a>
                     </li>
                     <li>
-                        <a href="bitclass">比特学堂</a>
+                        <a href="/bitcandy/bitclass">比特学堂</a>
                     </li>
                     <li>
                         <a href="#">糖果活动</a>
                     </li>
                     <li>
-                        <a href="mine">用户中心</a>
+                        <a href="/bitcandy/mine">用户中心</a>
                     </li>
                     <li>
-                        <a href="about">关于我们</a>
+                        <a href="/bitcandy/about">关于我们</a>
                     </li>
                 </ul>
             </nav>
