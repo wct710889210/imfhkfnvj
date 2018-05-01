@@ -3,7 +3,7 @@
 <div id="sidebar">
     <!-- Sidebar Brand -->
     <div id="sidebar-brand" class="themed-background text-center">
-        <a href="index.html" class="sidebar-title">
+        <a href="admin" class="sidebar-title">
             <img src="/bitcandy/admin/img/logo.png" width="25%">
             <strong>比特糖果</strong>
         </a>
@@ -130,7 +130,7 @@
             <!-- User Dropdown -->
             <li class="dropdown">
                 <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">
-                    <strong>欢迎您，管理员 &nbsp;&nbsp;&nbsp;<%=session.getAttribute("admin")%></strong>
+                    <strong>欢迎您，<%=session.getAttribute("admin")%>&nbsp;&nbsp;&nbsp;</strong>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right">
 
