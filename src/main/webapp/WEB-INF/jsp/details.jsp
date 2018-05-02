@@ -28,8 +28,8 @@
     <!-- Responsive CSS -->
     <link rel="stylesheet" href="../css/theme-responsive.css">
     <!-- Switcher CSS -->
-    <link href="css/switcher.css" rel="stylesheet">
-    <link href="css/spectrum.css" rel="stylesheet">
+    <link href="../css/spectrum.css" rel="stylesheet">
+    <link href="../css/switcher.css" rel="stylesheet">
     <link rel="shortcut icon" href="admin/img/favicon.png">
 
 

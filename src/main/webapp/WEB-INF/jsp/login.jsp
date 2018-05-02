@@ -35,7 +35,7 @@
 <div class="wrap">
   <!-- Header Start -->
 
-  <%@include file="header.jsp"%>
+  <%@include file="header.jsp" %>
 
   <!-- Header End -->
   <!-- Content Start -->
@@ -59,27 +59,15 @@
           <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12 col-lg-offset-2 col-md-offset-2 col-sm-offset-3">
             <div class="row">
               <div class="col-md-8 col-md-offset-2">
-                <div class="alert alert-danger alert-dismissible error" role="alert" style="display:none">
-                  <button type="button" class="close errorclose">
+                <div class="alert alert-danger alert-dismissible" role="alert" style="display:none">
+                  <button type="button" class="close">
                     <span aria-hidden="true">&times;</span>
                   </button>
-                  <strong>错误!</strong>
-                  <span id="error"></span>
+                  <span id="message"></span>
                 </div>
               </div>
             </div>
 
-            <div class="row">
-              <div class="col-md-8 col-md-offset-2">
-                <div class="alert alert-success alert-dismissible success" role="alert" style="display:none">
-                  <button type="button" class="close successclose">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                  <strong>恭喜!</strong>
-                  <span id="success"></span>
-                </div>
-              </div>
-            </div>
             <form method="post" class="reply" id="contact">
               <div class="row">
                 <div class="col-lg-6 col-xs-12 col-lg-offset-3">
@@ -179,62 +167,57 @@
 <script src="js/switcher.js"></script>
 <script src="js/custom.js"></script>
 <script>
-  $('.errorclose').on('click', function () {
-    $('.error').fadeOut(500, function () {
+  $('.close').on('click', function () {
+    $('.alert').fadeOut(500, function () {
     });
-  });
-
-  $('.successclose').on('click', function () {
-      $('.success').fadeOut(500, function () {
-      });
   });
 
   $('#login').on('click', function () {
     var account = $('#account').val();
     var password = $('#password').val();
-    console.log(account);
-    console.log(password);
     var Reg = /^[a-zA-Z0-9_-]+@([a-zA-Z0-9]+\.)+(com|cn|net|org)$/;
     if (!Reg.test(account)) {
-      $('#error').html('邮箱格式有误，请重新输入！');
-      $('.error').fadeIn(500, function () {
+      $('#message').html('邮箱格式有误，请重新输入！');
+      $('.alert').fadeIn(500, function () {
       });
     } else if (password == '') {
-      $('#error').html('密码不能为空，请重新输入！');
-      $('.error').fadeIn(500, function () {
+      $('#message').html('密码不能为空，请重新输入！');
+      $('.alert').fadeIn(500, function () {
       });
     } else {
-        formSubmit();
+      formSubmit();
     }
   })
 
   function formSubmit() {
-      var text = "account=" + $("[name=account]").val().toString() + "&password=" + $("[name=password]").val().toString();
-      $.ajax({
-          data: text,
-          type: "post",
-          url: "/bitcandy/loginCheck",
-          success: function (response) {
-              if (response == "0") {
-                  $('#success').html('登录成功');
-                  $('.success').fadeIn(500, function () {
-                  });
-                  setTimeout("window.location.href='/bitcandy/mine'", 1000);
-              }else if (response == "1") {
-                  $('#error').html('不存在此用户');
-                  $('.error').fadeIn(500, function () {
-                  });
-              }else if(response == "2"){
-                  $('#error').html('密码错误');
-                  $('.error').fadeIn(500, function () {
-                  });
-              }else if(response == "3"){
-                  $('#error').html('账号未激活');
-                  $('.error').fadeIn(500, function () {
-                  });
-              }
-          }
-      })
+    var text = "account=" + $("[name=account]").val().toString() + "&password=" + $("[name=password]").val().toString();
+    $.ajax({
+      data: text,
+      type: "post",
+      url: "/bitcandy/loginCheck",
+      success: function (response) {
+        if (response == 1) {
+          $('#message').html('不存在此用户');
+          $('.alert').fadeIn(500, function () {
+          });
+        } else if (response == 2) {
+          $('#message').html('密码错误');
+          $('.alert').fadeIn(500, function () {
+          });
+        } else if (response == "3") {
+          $('#message').html('账号未激活');
+          $('.alert').fadeIn(500, function () {
+          });
+        } else if (response == 0) {
+          $('.alert').removeClass('alert-danger');
+          $('.alert').addClass('alert-success');
+          $('#message').html('登录成功');
+          $('.alert').fadeIn(500, function () {
+          });
+          setTimeout("window.location.href='/bitcandy/mine'", 1000);
+        }
+      }
+    })
   }
 </script>
 
