@@ -1,6 +1,7 @@
 package com.btcd.service;
 
 import com.btcd.data.Banner;
+import com.btcd.data.Invite;
 import com.btcd.data.Project;
 import com.btcd.data.User;
 
@@ -16,4 +17,6 @@ public interface IndexService {
     public User findUserByConfirm(String confirm);
     public void updateUser(User user);
     public List<User> findAllUser();
+    public void addInvite(String account,String invite);
+    public List<Invite> findInviteByInvite(String invite);
 }

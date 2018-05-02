@@ -63,11 +63,11 @@
                   <header class="post-header">
                     <div class="post-date">
                       <a class="date" href="#">
-                        <strong>05</strong>
-                        <i>3月</i>
+                        <strong>${bitclass.getTime().getMonth()+1}</strong>
+                        <i>${bitclass.getTime().getDate()}月</i>
                       </a>
                     </div>
-                    <h3 class="content-title"><a href="#">${bitclass.getTitle()}</a></h3>
+                    <h3 class="content-title"><a href="/bitcandy/article/${bitclass.getId()}">${bitclass.getTitle()}</a></h3>
                     <div class="blog-entry-meta">
                       <div class="blog-entry-meta-author">
                         <i class="icon-user"></i>

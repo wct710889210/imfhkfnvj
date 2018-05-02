@@ -100,8 +100,8 @@
                   <td class="text-center">${banner.getId()}</td>
                   <td class="text-center">${banner.getTitle()}</td>
                   <td class="text-center">
-                      <a href="img/1.jpg" data-toggle="lightbox-image">
-                        <img src="img/1.jpg" height="100">
+                      <a href="${banner.getPath()}" data-toggle="lightbox-image">
+                        <img src="${banner.getPath()}" height="100">
                       </a>
                   </td>
                   <td class="text-center">
