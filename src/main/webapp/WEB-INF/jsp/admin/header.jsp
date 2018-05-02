@@ -19,7 +19,7 @@
                 <li>
                     <a href="#" class="sidebar-nav-menu">
                         <i class="fa fa-chevron-left sidebar-nav-indicator sidebar-nav-mini-hide"></i>
-                        <i class="fa fa-list-alt sidebar-nav-icon"></i>
+                        <i class="hi hi-picture sidebar-nav-icon"></i>
                         <span class="sidebar-nav-mini-hide">轮播图广告</span>
                     </a>
                     <ul>
@@ -34,7 +34,7 @@
                 <li>
                     <a href="#" class="sidebar-nav-menu">
                         <i class="fa fa-chevron-left sidebar-nav-indicator sidebar-nav-mini-hide"></i>
-                        <i class="gi gi-notes_2 sidebar-nav-icon"></i>
+                        <i class="fa fa-gift sidebar-nav-icon"></i>
                         <span class="sidebar-nav-mini-hide">糖果活动</span>
                     </a>
                     <ul>
@@ -64,7 +64,7 @@
                 <li>
                     <a href="#" class="sidebar-nav-menu">
                         <i class="fa fa-chevron-left sidebar-nav-indicator sidebar-nav-mini-hide"></i>
-                        <i class="fa fa-mortar-board sidebar-nav-icon"></i>
+                        <i class="gi gi-parents sidebar-nav-icon"></i>
                         <span class="sidebar-nav-mini-hide">用户中心</span>
                     </a>
                     <ul>
