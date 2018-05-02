@@ -32,6 +32,7 @@
   <link rel="shortcut icon" href="admin/img/favicon.png">
 </head>
 
+
 <body class="home">
 <div class="wrap">
   <!-- Header Start -->
@@ -43,7 +44,7 @@
         <div class="row">
           <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
             <h2 class="title mine">用户中心</h2>
-            <span class="pull-right user">欢迎您，${user.getAccount()} <a href="#"> 注销</a></span>
+            <span class="pull-right user">欢迎您，${user.getAccount()} <a href="/bitcandy/logout"> 注销</a></span>
           </div>
 
         </div>
@@ -85,6 +86,7 @@
 
               <div class="col-md-7">
 
+
                 <div class="form-group">
                   <span>邀请朋友获取更多糖果</span>
                   <input type="text" class="form-control" value="${user.getInvite()}" id="copycontent"/>
@@ -109,21 +111,13 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>未做好</td>
-                      <td>2018年4月24日</td>
-                      <td>+ 15 枚 BTCD</td>
-                    </tr>
-                    <tr>
-                      <td>未做好</td>
-                      <td>2018年4月24日</td>
-                      <td>+ 15 枚 BTCD</td>
-                    </tr>
-                    <tr>
-                      <td>未做好</td>
-                      <td>2018年4月24日</td>
-                      <td>+ 15 枚 BTCD</td>
-                    </tr>
+                      <c:forEach var="invite" items="${invites}">
+                        <tr>
+                          <td>${invite.getAccount()}</td>
+                          <td>${invite.getTime()}</td>
+                          <td>+ 15 枚 BTCD</td>
+                        </tr>
+                      </c:forEach>
                   </tbody>
                 </table>
               </div>

@@ -39,6 +39,7 @@
                 <value>com/btcd/data/User.hbm.xml</value>
                 <value>com/btcd/data/Bitclass.hbm.xml</value>
                 <value>com/btcd/data/Admin.hbm.xml</value>
+                <value>com/btcd/data/Invite.hbm.xml</value>
             </list>
         </property>
         <property name="hibernateProperties">

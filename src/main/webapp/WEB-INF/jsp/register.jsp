@@ -208,7 +208,15 @@
   })
 
   function formSubmit() {
-      var text = "account=" + $("[name=account]").val().toString() + "&password=" + $("[name=password]").val().toString();
+      var text = "account=" + $("[name=account]").val().toString() + "&password=" + $("[name=password]").val().toString()
+          <%
+            if(request.getAttribute("invite") != null){
+           %>
+           + "&invite="+"<%=request.getAttribute("invite")%>"
+          <%
+            }
+          %>
+      ;
       $.ajax({
           data: text,
           type: "post",

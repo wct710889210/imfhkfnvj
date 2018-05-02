@@ -2,9 +2,11 @@ package com.btcd.service;
 
 import com.btcd.conf.StaticConf;
 import com.btcd.dao.BannerDao;
+import com.btcd.dao.InviteDao;
 import com.btcd.dao.ProjectDaoImp;
 import com.btcd.dao.UserDao;
 import com.btcd.data.Banner;
+import com.btcd.data.Invite;
 import com.btcd.data.Project;
 import com.btcd.data.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +33,8 @@ public class IndexServiceImp implements IndexService{
     private StaticConf staticConf;
     @Autowired
     private ProjectDaoImp projectDao;
+    @Autowired
+    private InviteDao inviteDao;
 
     // 发件人的 邮箱 和 授权码
     public static String myEmailAccount = "kxbk100@foxmail.com";
@@ -77,7 +81,7 @@ public class IndexServiceImp implements IndexService{
         user.setConfirm(DigestUtils.md5DigestAsHex(account.getBytes()));
         user.setAccount(account);
         user.setPassword(password);
-        user.setBalance(0);
+        user.setBalance(50);
         user.setFrozen(false);
         user.setInvite(staticConf.inviteUrl+DigestUtils.md5DigestAsHex(account.getBytes()));
         user.setTime(new Date(System.currentTimeMillis()));
@@ -142,6 +146,20 @@ public class IndexServiceImp implements IndexService{
     @Override
     public List<User> findAllUser() {
         return userDao.findAll();
+    }
+
+    @Override
+    public void addInvite(String account, String invite) {
+        Invite inviteObj = new Invite();
+        inviteObj.setAccount(account);
+        inviteObj.setInvite(invite);
+        inviteObj.setTime(new Date(System.currentTimeMillis()));
+        inviteDao.add(inviteObj);
+    }
+
+    @Override
+    public List<Invite> findInviteByInvite(String invite) {
+        return inviteDao.findByInvite(invite);
     }
 
     public MimeMessage createMimeMessage(Session session, String sendMail, String receiveMail,String url) throws Exception {

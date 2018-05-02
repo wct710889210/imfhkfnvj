@@ -62,6 +62,12 @@ public class IndexController {
         return "bitclass";
     }
 
+    @RequestMapping("/article/{id}")
+    public String article(@PathVariable("id")int id,Model model){
+        model.addAttribute("bitclass",adminService.findBitclassById(id));
+        return "article";
+    }
+
     //从html中提取纯文本
     public String html2Text(String inputString) {
         String htmlStr = inputString; // 含html标签的字符串
