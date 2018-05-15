@@ -47,7 +47,7 @@ public class UserController {
                 System.out.printf("sending");
                 indexService.sendEmail(account);
                 indexService.addUser(account,DigestUtils.md5DigestAsHex(password.getBytes()));
-                if(invite != null){
+                if(invite != null&&!invite.equals("null")){
                     User user = (User) indexService.findUserByConfirm(invite);
                     user.setBalance(user.getBalance()+15);
                     indexService.updateUser(user);
