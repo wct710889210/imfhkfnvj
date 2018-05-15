@@ -52,7 +52,7 @@
         <!-- END Login Title -->
 
         <!-- Login Form -->
-        <form action="/bitcandy/adminLoginCheck" id="form-login" method="post" class="form-horizontal">
+        <form action="/adminLoginCheck" id="form-login" method="post" class="form-horizontal">
           <div class="form-group">
             <label for="login-email" class="col-xs-12">账号</label>
             <div class="col-xs-12">

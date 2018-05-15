@@ -13,8 +13,8 @@
             <!-- Logo Start -->
             <div class="logo pull-left">
                 <h1>
-                    <a href="/bitcandy/">
-                        <img src="/bitcandy/img/logo.png" height="80">
+                    <a href="/">
+                        <img src="/img/logo.png" height="80">
                     </a>
                 </h1>
             </div>
@@ -30,19 +30,19 @@
             <nav class="collapse navbar-collapse menu">
                 <ul class="nav navbar-nav sf-menu">
                     <li>
-                        <a href="/bitcandy/">首页</a>
+                        <a href="/">首页</a>
                     </li>
                     <li>
-                        <a href="/bitcandy/bitclass">比特学堂</a>
+                        <a href="/bitclass">比特学堂</a>
                     </li>
                     <li>
                         <a href="#">糖果活动</a>
                     </li>
                     <li>
-                        <a href="/bitcandy/mine">用户中心</a>
+                        <a href="/mine">用户中心</a>
                     </li>
                     <li>
-                        <a href="/bitcandy/about">关于我们</a>
+                        <a href="/about">关于我们</a>
                     </li>
                 </ul>
             </nav>

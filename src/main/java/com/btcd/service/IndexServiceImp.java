@@ -37,10 +37,10 @@ public class IndexServiceImp implements IndexService{
     private InviteDao inviteDao;
 
     // 发件人的 邮箱 和 授权码
-    public static String myEmailAccount = "kxbk100@foxmail.com";
-    public static String myEmailPassword = "yevvmjcahefbbfaf";
+    public String myEmailAccount = "service@bitcandy.one";
+    public String myEmailPassword = "Ser2btcd";
     // 发件人邮箱的 SMTP 服务器地址
-    public static String myEmailSMTPHost = "smtp.qq.com";
+    public String myEmailSMTPHost = "smtp.exmail.qq.com";
 
     @Override
     public void addBanner(String title, String path) {

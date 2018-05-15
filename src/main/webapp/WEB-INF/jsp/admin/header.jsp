@@ -4,7 +4,7 @@
     <!-- Sidebar Brand -->
     <div id="sidebar-brand" class="themed-background text-center">
         <a href="admin" class="sidebar-title">
-            <img src="/bitcandy/admin/img/logo.png" width="25%">
+            <img src="/admin/img/logo.png" width="25%">
             <strong>比特糖果</strong>
         </a>
     </div>
@@ -24,10 +24,10 @@
                     </a>
                     <ul>
                         <li>
-                            <a href="/bitcandy/banner">轮播图上传</a>
+                            <a href="/banner">轮播图上传</a>
                         </li>
                         <li>
-                            <a href="/bitcandy/bannerManage">轮播图管理</a>
+                            <a href="/bannerManage">轮播图管理</a>
                         </li>
                     </ul>
                 </li>
@@ -39,10 +39,10 @@
                     </a>
                     <ul>
                         <li>
-                            <a href="/bitcandy/activity">活动发布</a>
+                            <a href="/activity">活动发布</a>
                         </li>
                         <li>
-                            <a href="/bitcandy/activityManage">活动管理</a>
+                            <a href="/activityManage">活动管理</a>
                         </li>
                     </ul>
                 </li>
@@ -54,10 +54,10 @@
                     </a>
                     <ul>
                         <li>
-                            <a href="/bitcandy/class">文章发布</a>
+                            <a href="/class">文章发布</a>
                         </li>
                         <li>
-                            <a href="/bitcandy/classManage">文章管理</a>
+                            <a href="/classManage">文章管理</a>
                         </li>
                     </ul>
                 </li>
@@ -69,7 +69,7 @@
                     </a>
                     <ul>
                         <li>
-                            <a href="/bitcandy/userList">用户管理</a>
+                            <a href="/userList">用户管理</a>
                         </li>
                     </ul>
                 </li>
@@ -135,7 +135,7 @@
                 <ul class="dropdown-menu dropdown-menu-right">
 
                     <li>
-                        <a href="/bitcandy">
+                        <a href="/">
                             <i class="hi hi-home pull-right"></i>
                             网站首页
                         </a>

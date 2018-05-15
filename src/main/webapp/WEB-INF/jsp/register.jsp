@@ -220,7 +220,7 @@
       $.ajax({
           data: text,
           type: "post",
-          url: "/bitcandy/registerCheck",
+          url: "/registerCheck",
           success: function (response) {
               if (response == 1) {
                   $('.alert').removeClass('alert-success');
