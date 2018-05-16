@@ -53,7 +53,7 @@
             <div class="posts-block col-lg-12 col-md-12 col-sm-12 col-xs-12">
               <article>
                 <div class="post-content">
-                  <p>恭喜，激活成功，点击跳转至<a href="/bitcandy/login">登录页面</a></p>
+                  <p>恭喜，激活成功，点击跳转至<a href="/login">登录页面</a></p>
                 </div>
               </article>
             </div>

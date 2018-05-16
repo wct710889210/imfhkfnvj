@@ -40,11 +40,12 @@ public class AdminServiceImp implements AdminService{
     }
 
     @Override
-    public void saveBanner(String description, String path) {
+    public void saveBanner(String description, String path,boolean isUse,String url) {
         Banner banner = new Banner();
         banner.setTitle(description);
         banner.setPath(path);
-        banner.setUse(true);
+        banner.setUse(isUse);
+        banner.setUrl(url);
         bannerDao.add(banner);
     }
 

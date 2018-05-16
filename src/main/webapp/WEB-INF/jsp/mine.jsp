@@ -44,7 +44,7 @@
         <div class="row">
           <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
             <h2 class="title mine">用户中心</h2>
-            <span class="pull-right user">欢迎您，${user.getAccount()} <a href="/bitcandy/logout"> 注销</a></span>
+            <span class="pull-right user">欢迎您，${user.getAccount()} <a href="/logout"> 注销</a></span>
           </div>
 
         </div>

@@ -5,6 +5,7 @@ public class Banner {
     private String title;
     private String path;
     private boolean use;
+    private String url;
 
     public boolean isUse() {
         return use;
@@ -36,5 +37,13 @@ public class Banner {
 
     public void setPath(String path) {
         this.path = path;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

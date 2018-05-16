@@ -103,12 +103,21 @@ public class AdminController {
 
     //banner的修改页面
     @RequestMapping("/bannerModify/{id}")
-    public String bannerModify(HttpSession session,@PathVariable("id") int id,@RequestParam("description")String description,@RequestParam("image")MultipartFile file,HttpServletRequest request){
+    public String bannerModify(HttpSession session,@PathVariable("id") int id,@RequestParam("image")MultipartFile file,HttpServletRequest request){
         if(session.getAttribute("admin" )==null){
             return "redirect:/adminLogin";
         }
         Banner banner = adminService.findBannerById(id);
+        String url = null;
+        String description = null;
+        if(request.getParameter("url") != null){
+            url = request.getParameter("url");
+        }
+        if(request.getParameter("description") != null){
+            description = request.getParameter("description");
+        }
         banner.setTitle(description);
+        banner.setUrl(url);
         //如果文件不为空，写入上传路径
         if(!file.isEmpty()) {
             //上传文件路径
@@ -143,11 +152,19 @@ public class AdminController {
     //上传
     //TODO 限制上传类型
     @RequestMapping("/bannerUpload")
-    public String bannerUpload(HttpSession session,@RequestParam("description") String description, HttpServletRequest request, @RequestParam("image")MultipartFile file){
+    public String bannerUpload(HttpSession session, HttpServletRequest request, @RequestParam("image")MultipartFile file){
         if(session.getAttribute("admin" )==null){
             return "redirect:/adminLogin";
         }
         //如果文件不为空，写入上传路径
+        String url = null;
+        String description = null;
+        if(request.getParameter("url") != null){
+            url = request.getParameter("url");
+        }
+        if(request.getParameter("description") != null){
+            description = request.getParameter("description");
+        }
         if(!file.isEmpty()) {
             //上传文件路径
             String path = request.getServletContext().getRealPath("static"+File.separator+"uploadFiles"+File.separator+"banners");
@@ -167,7 +184,7 @@ public class AdminController {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            adminService.saveBanner(description,ultiPath.getPath().substring(ultiPath.getPath().indexOf("uploadFiles")));
+            adminService.saveBanner(description,ultiPath.getPath().substring(ultiPath.getPath().indexOf("uploadFiles")),true,url);
         } else {
             //TODO 文件为空时的情况（未完成）
             return "redirect:/bannerManage";

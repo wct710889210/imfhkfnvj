@@ -44,7 +44,7 @@
             <div class="slider-wrapper theme-default">
                 <div id="nivoslider" class="nivoSlider"
                      <c:forEach items="${banners}" var="banner">
-                         <a href="#">
+                         <a href="${banner.getUrl()}">
                              <img src="${banner.getPath()}" alt="" data-transition="slideInRight" title="#htmlcaption${banner.getId()}">
                          </a>
                      </c:forEach>

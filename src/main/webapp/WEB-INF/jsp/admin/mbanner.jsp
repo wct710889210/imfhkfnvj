@@ -93,7 +93,7 @@
                 <div class="form-group">
                   <label class="col-md-3 control-label" for="example-text-input">活动链接</label>
                   <div class="col-md-6">
-                    <input type="text" id="example-a-input" name="url" class="form-control">
+                    <input type="text" id="example-a-input" name="url" class="form-control" value="${banner.getUrl()}" >
                   </div>
                 </div>
                 <div class="form-group">

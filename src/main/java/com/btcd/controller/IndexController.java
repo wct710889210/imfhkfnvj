@@ -5,11 +5,14 @@ import com.btcd.data.Bitclass;
 import com.btcd.data.Project;
 import com.btcd.service.AdminService;
 import com.btcd.service.IndexService;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.sql.Date;
 import java.util.List;
@@ -29,6 +32,33 @@ public class IndexController {
         model.addAttribute("projects",projects);
         model.addAttribute("banners",banners);
         return "index";
+    }
+
+    @RequestMapping(value = "/getHomeData",produces = "text/json;charset=utf-8")
+    @ResponseBody
+    public String getHomeData(){
+        List<Banner> banners = indexService.findAll();
+        List<Project> projects = indexService.findAllProject();
+        JSONArray bannerJson = JSONArray.fromObject(banners);
+        JSONArray projectsJson = new JSONArray();
+        for(Project project:projects){
+            JSONObject temp = new JSONObject();
+            temp.put("id",project.getId());
+            temp.put("title",project.getTitle());
+            temp.put("path",project.getPath());
+            temp.put("content",project.getContent());
+            temp.put("method",project.getMethod());
+            temp.put("address",project.getAddress());
+            temp.put("state",project.getState());
+            temp.put("price",project.getPrice());
+            temp.put("endTime",project.getEndTime().toString());
+            temp.put("top",project.isTop());
+            projectsJson.add(temp);
+        }
+        JSONArray json = new JSONArray();
+        json.add(bannerJson.toString());
+        json.add(projectsJson.toString());
+        return json.toString();
     }
 
     @RequestMapping("/details/{id}")
