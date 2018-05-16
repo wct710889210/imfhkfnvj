@@ -72,12 +72,12 @@
                 <c:forEach var="project" items="${projects}">
                   <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                     <a href="details/${project.getId()}" class="content-box">
-                      <div class="content-box-icon">
-                        <img src="${project.getPath()}" alt=" " />
+                      <div class="content-box-icon" style="height:270px;overflow: hidden;">
+                        <img src="${project.getPath()}" alt=" " style="width: 100%"/>
                       </div>
                       <div class="content-box-info">
-                        <h4>${project.getTitle()}</h4>
-                        <p>
+                        <h4 class="text_overflow1">${project.getTitle()}</h4>
+                        <p class="text_overflow">
                           ${project.getContent()}
                         </p>
                       </div>
@@ -419,6 +419,16 @@
         <script src="js/spectrum.js"></script>
         <script src="js/switcher.js"></script>
         <script src="js/custom.js"></script>
+      <script>
+        $.ajax({
+            url: 'http://192.168.1.111/getHomeData',
+            type: "post",
+            cache: false,
+            success: function (data) {
+                console.log(data);
+            }
+        })
+      </script>
 
     </body>
 
