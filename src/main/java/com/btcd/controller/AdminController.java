@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.sql.Date;
 import java.util.regex.Pattern;
@@ -183,10 +184,21 @@ public class AdminController {
     }
 
     @RequestMapping("/activityUpload")
-    public String activityUpload(String title, String content, String method, String address, String state, double price, Date endTime,boolean top, HttpServletRequest request, @RequestParam("image")MultipartFile file,HttpSession session){
+    public String activityUpload(Date endTime,boolean top, HttpServletRequest request, @RequestParam("image")MultipartFile file,HttpSession session){
         if(session.getAttribute("admin" )==null){
             return "redirect:/adminLogin";
         }
+        try {
+            request.setCharacterEncoding("utf-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        String title = request.getParameter("title");
+        String content = request.getParameter("content");
+        String method = request.getParameter("method");
+        String address = request.getParameter("address");
+        String state = request.getParameter("state");
+        double price = Double.parseDouble(request.getParameter("price"));
         //如果文件不为空，写入上传路径
         if(!file.isEmpty()) {
             //上传文件路径
@@ -248,10 +260,22 @@ public class AdminController {
     }
 
     @RequestMapping("activityModify/{id}")
-    public String activityModify(HttpSession session,@PathVariable("id")int id,String title, String content, String method, String address, String state, double price, Date endTime,boolean top, HttpServletRequest request, @RequestParam("image")MultipartFile file){
+    public String activityModify(HttpSession session,@PathVariable("id")int id, Date endTime,boolean top, HttpServletRequest request, @RequestParam("image")MultipartFile file){
         if(session.getAttribute("admin" )==null){
             return "redirect:/adminLogin";
         }
+        try {
+            request.setCharacterEncoding("utf-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        String title = request.getParameter("title");
+        String content = request.getParameter("content");
+        String method = request.getParameter("method");
+        String address = request.getParameter("address");
+        String state = request.getParameter("state");
+        double price = Double.parseDouble(request.getParameter("price"));
+        System.out.printf("method:"+method);
         Project project = adminService.findProjectById(id);
         project.setTitle(title);
         project.setContent(content);

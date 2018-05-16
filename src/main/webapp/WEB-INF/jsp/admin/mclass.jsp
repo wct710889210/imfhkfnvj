@@ -92,7 +92,7 @@
               <!-- END Get Started Title -->
 
               <!-- Get Started Content -->
-              <form action="/bitcandy/classModify/${bitclass.getId()}" method="post" enctype="multipart/form-data" class="form-horizontal form-bordered">
+              <form action="/classModify/${bitclass.getId()}" method="post" enctype="multipart/form-data" class="form-horizontal form-bordered">
                 <div class="form-group">
                   <label class="col-md-3 control-label" for="example-text-input">标题</label>
                   <div class="col-md-6">
