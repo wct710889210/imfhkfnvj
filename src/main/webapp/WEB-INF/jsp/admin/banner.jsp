@@ -93,7 +93,7 @@
                 <div class="form-group">
                   <label class="col-md-3 control-label" for="example-text-input">活动链接</label>
                   <div class="col-md-6">
-                    <input type="text" id="example-a-input" name="description" class="form-control">
+                    <input type="text" id="example-a-input" name="url" class="form-control">
                   </div>
                 </div>
 
@@ -101,9 +101,6 @@
                   <label class="col-md-3 control-label" for="example-file-input">上传新轮播图</label>
                   <div class="col-md-9">
                     <input type="file" id="example-file-input" name="image">
-                    <a href="img/1.jpg" data-toggle="lightbox-image">
-                      <img src="img/1.jpg" height="200" style="margin: 10px 5px;">
-                    </a>
                   </div>
                 </div>
 

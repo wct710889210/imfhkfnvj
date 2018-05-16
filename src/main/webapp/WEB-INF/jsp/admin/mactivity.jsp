@@ -86,7 +86,7 @@
               <!-- END Get Started Title -->
 
               <!-- Get Started Content -->
-              <form action="/bitcandy/activityModify/${project.getId()}" method="post" enctype="multipart/form-data" class="form-horizontal form-bordered">
+              <form action="/activityModify/${project.getId()}" method="post" enctype="multipart/form-data" class="form-horizontal form-bordered">
                 <div class="form-group">
                   <label class="col-md-3 control-label" for="example-text-input">标题</label>
                   <div class="col-md-6">
@@ -124,8 +124,8 @@
                   <label class="col-md-3 control-label" for="example-text-input">状态</label>
                   <div class="col-md-2">
                     <select name="state" class="form-control">
-                        <option value="准备中" <c:if test="${project.getState() eq 准备中}">selected</c:if> >准备中</option>
-                        <option value="发放中" <c:if test="${project.getState() eq 发放中}">selected</c:if> >发放中</option>
+                        <option value="准备中" <c:if test="${project.getState() eq '准备中'}">selected</c:if> >准备中</option>
+                        <option value="发放中" <c:if test="${project.getState() eq '发放中'}">selected</c:if> >发放中</option>
                     </select>
                   </div>
                 </div>

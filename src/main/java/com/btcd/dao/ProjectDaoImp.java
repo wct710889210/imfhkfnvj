@@ -37,7 +37,7 @@ public class ProjectDaoImp implements ProjectDao{
     @Override
     public List<Project> findAll() {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("From Project");
+        Query query = session.createQuery("From Project order by top desc");
         return query.list();
     }
 }

@@ -82,7 +82,7 @@
               <!-- END Get Started Title -->
 
               <!-- Get Started Content -->
-              <form action="/bitcandy/bannerModify/${banner.getId()}" method="post" enctype="multipart/form-data" class="form-horizontal form-bordered">
+              <form action="/bannerModify/${banner.getId()}" method="post" enctype="multipart/form-data" class="form-horizontal form-bordered">
 
                 <div class="form-group">
                   <label class="col-md-3 control-label" for="example-text-input">轮播图介绍</label>
@@ -93,7 +93,7 @@
                 <div class="form-group">
                   <label class="col-md-3 control-label" for="example-text-input">活动链接</label>
                   <div class="col-md-6">
-                    <input type="text" id="example-a-input" name="description" class="form-control">
+                    <input type="text" id="example-a-input" name="url" class="form-control">
                   </div>
                 </div>
                 <div class="form-group">
