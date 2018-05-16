@@ -13,22 +13,22 @@
   <!-- Mobile Metas -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Library CSS -->
-  <link rel="stylesheet" href="/bitcandy/css/bootstrap.css">
-  <link rel="stylesheet" href="/bitcandy/css/fonts/font-awesome/css/font-awesome.css">
-  <link rel="stylesheet" href="/bitcandy/css/animations.css" media="screen">
-  <link rel="stylesheet" href="/bitcandy/css/superfish.css" media="screen">
-  <link rel="stylesheet" href="/bitcandy/css/revolution-slider/css/settings.css" media="screen">
-  <link rel="stylesheet" href="/bitcandy/css/prettyPhoto.css" media="screen">
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <link rel="stylesheet" href="/css/fonts/font-awesome/css/font-awesome.css">
+  <link rel="stylesheet" href="/css/animations.css" media="screen">
+  <link rel="stylesheet" href="/css/superfish.css" media="screen">
+  <link rel="stylesheet" href="/css/revolution-slider/css/settings.css" media="screen">
+  <link rel="stylesheet" href="/css/prettyPhoto.css" media="screen">
   <!-- Theme CSS -->
-  <link rel="stylesheet" href="/bitcandy/css/style.css">
+  <link rel="stylesheet" href="/css/style.css">
   <!-- Skin -->
-  <link rel="stylesheet" href="/bitcandy/css/colors/blue.css" id="colors">
+  <link rel="stylesheet" href="/css/colors/blue.css" id="colors">
   <!-- Responsive CSS -->
-  <link rel="stylesheet" href="/bitcandy/css/theme-responsive.css">
+  <link rel="stylesheet" href="/css/theme-responsive.css">
   <!-- Switcher CSS -->
-  <link href="/bitcandy/css/switcher.css" rel="stylesheet">
-  <link href="/bitcandy/css/spectrum.css" rel="stylesheet">
-  <link rel="shortcut icon" href="/bitcandy/admin/img/favicon.png">
+  <link href="/css/switcher.css" rel="stylesheet">
+  <link href="/css/spectrum.css" rel="stylesheet">
+  <link rel="shortcut icon" href="/admin/img/favicon.png">
 </head>
 
 <body class="home">
@@ -116,24 +116,24 @@
   </a>
 </div>
 
-<script src="/bitcandy/js/jquery.min.js"></script>
-<script src="/bitcandy/js/bootstrap.js"></script>
-<script src="/bitcandy/js/jquery.parallax.js"></script>
-<script src="/bitcandy/js/modernizr-2.6.2.min.js"></script>
-<script src="/bitcandy/js/revolution-slider/js/jquery.themepunch.revolution.min.js"></script>
-<script src="/bitcandy/js/jquery.nivo.slider.pack.js"></script>
-<script src="/bitcandy/js/jquery.prettyPhoto.js"></script>
-<script src="/bitcandy/js/superfish.js"></script>
-<script src="/bitcandy/js/tweetMachine.js"></script>
-<script src="/bitcandy/js/tytabs.js"></script>
-<script src="/bitcandy/js/jquery.gmap.min.js"></script>
-<script src="/bitcandy/js/circularnav.js"></script>
-<script src="/bitcandy/js/jquery.sticky.js"></script>
-<script src="/bitcandy/js/jflickrfeed.js"></script>
-<script src="/bitcandy/js/imagesloaded.pkgd.min.js"></script>
-<script src="/bitcandy/js/waypoints.min.js"></script>
-<script src="/bitcandy/js/switcher.js"></script>
-<script src="/bitcandy/js/custom.js"></script>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/jquery.parallax.js"></script>
+<script src="/js/modernizr-2.6.2.min.js"></script>
+<script src="/js/revolution-slider/js/jquery.themepunch.revolution.min.js"></script>
+<script src="/js/jquery.nivo.slider.pack.js"></script>
+<script src="/js/jquery.prettyPhoto.js"></script>
+<script src="/js/superfish.js"></script>
+<script src="/js/tweetMachine.js"></script>
+<script src="/js/tytabs.js"></script>
+<script src="/js/jquery.gmap.min.js"></script>
+<script src="/js/circularnav.js"></script>
+<script src="/js/jquery.sticky.js"></script>
+<script src="/js/jflickrfeed.js"></script>
+<script src="/js/imagesloaded.pkgd.min.js"></script>
+<script src="/js/waypoints.min.js"></script>
+<script src="/js/switcher.js"></script>
+<script src="/js/custom.js"></script>
 </body>
 
 </html>

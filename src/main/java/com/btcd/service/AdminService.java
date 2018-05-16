@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface AdminService {
     public String generateRandomFilename();
-    public void saveBanner(String description,String path);
+    public void saveBanner(String description,String path,boolean isUse,String url);
     public List<Banner> findAllBanner();
     public Banner findBannerById(int id);
     public void updateBanner(Banner banner);

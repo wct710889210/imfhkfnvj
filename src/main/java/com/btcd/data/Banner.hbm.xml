@@ -7,8 +7,9 @@
     <id name="id" column="id" type="int">
         <generator class="increment"/>
     </id>
-    <property name="title" column="title" type="string" not-null="true"/>
+    <property name="title" column="title" type="string" not-null="false"/>
     <property name="path" column="path" type="string" not-null="true"/>
     <property name="use" column="is_use" type="boolean" not-null="true"/>
+    <property name="url" column="url" type="string" not-null="false" />
 </class>
 </hibernate-mapping>

@@ -67,7 +67,7 @@
                         <i>${bitclass.getTime().getDate()}月</i>
                       </a>
                     </div>
-                    <h3 class="content-title"><a href="/bitcandy/article/${bitclass.getId()}">${bitclass.getTitle()}</a></h3>
+                    <h3 class="content-title"><a href="/article/${bitclass.getId()}">${bitclass.getTitle()}</a></h3>
                     <div class="blog-entry-meta">
                       <div class="blog-entry-meta-author">
                         <i class="icon-user"></i>
