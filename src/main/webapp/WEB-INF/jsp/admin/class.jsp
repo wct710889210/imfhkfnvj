@@ -264,6 +264,15 @@
         UE.getEditor('editor').execCommand("clearlocaldata");
         alert("已清空草稿箱")
       }
+
+      UE.Editor.prototype._bkGetActionUrl = UE.Editor.prototype.getActionUrl;
+      UE.Editor.prototype.getActionUrl = function(action) {
+          if (action == 'uploadimage' || action == 'uploadscrawl' || action == 'uploadvideo') {
+              return '/ueditorUpload';
+          } else {
+              return this._bkGetActionUrl.call(this, action);
+          }
+      }
     </script>
   </body>
 

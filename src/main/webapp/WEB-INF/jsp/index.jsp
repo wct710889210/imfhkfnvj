@@ -419,6 +419,7 @@
         <script src="js/spectrum.js"></script>
         <script src="js/switcher.js"></script>
         <script src="js/custom.js"></script>
+      
       <script>
         $.ajax({
             url: 'https://bitcandy.one/getHomeData',
