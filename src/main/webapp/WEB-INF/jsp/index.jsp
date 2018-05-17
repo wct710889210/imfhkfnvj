@@ -419,16 +419,6 @@
         <script src="js/spectrum.js"></script>
         <script src="js/switcher.js"></script>
         <script src="js/custom.js"></script>
-      <script>
-        $.ajax({
-            url: 'http://192.168.1.111/getHomeData',
-            type: "post",
-            cache: false,
-            success: function (data) {
-                console.log(data);
-            }
-        })
-      </script>
 
     </body>
 
