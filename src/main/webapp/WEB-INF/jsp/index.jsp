@@ -41,61 +41,61 @@
         <!-- Content Start -->
         <div id="main">
           <!-- Slider Start-->
-            <div class="slider-wrapper theme-default">
-                <div id="nivoslider" class="nivoSlider"
-                     <c:forEach items="${banners}" var="banner">
-                         <a href="${banner.getUrl()}">
-                             <img src="${banner.getPath()}" alt="" data-transition="slideInRight" title="#htmlcaption${banner.getId()}">
-                         </a>
-                     </c:forEach>
-                </div>
-            <c:forEach var="banner" items="${banners}">
-              <div id="htmlcaption${banner.getId()}" class="nivo-html-caption">
-                <h2>
-                  <c:out value="${banner.getTitle()}" />
-                </h2>
-              </div>
+          <div class="slider-wrapper theme-default">
+            <div id="nivoslider" class="nivoSlider"
+            <c:forEach items="${banners}" var="banner">
+              <a href="${banner.getUrl()}">
+                <img src="${banner.getPath()}" alt="" data-transition="slideInRight" title="#htmlcaption${banner.getId()}">
+              </a>
             </c:forEach>
           </div>
+          <c:forEach var="banner" items="${banners}">
+            <div id="htmlcaption${banner.getId()}" class="nivo-html-caption">
+              <h2>
+                <c:out value="${banner.getTitle()}" />
+              </h2>
+            </div>
+          </c:forEach>
+        </div>
           <div class="clearfix"></div>
           <!-- Slider End-->
           <!-- Main Content start-->
           <div class="main-content">
             <!-- 3 Column Big Services -->
-            <div class="container">
+            <div class="container" id="activity">
               <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                   <h3 class="title">糖果列表</h3>
                 </div>
                 <div class="clearfix"></div>
 
-                <c:forEach var="project" items="${projects}">
-                  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <a href="details/${project.getId()}" class="content-box">
-                      <div class="content-box-icon" style="height:270px;overflow: hidden;">
-                        <img src="${project.getPath()}" alt=" " style="width: 100%"/>
-                      </div>
-                      <div class="content-box-info">
-                        <h4 class="text_overflow1">${project.getTitle()}</h4>
-                        <p class="text_overflow">
-                          ${project.getContent()}
-                        </p>
-                      </div>
-                    </a>
-                    <table class="table table-striped table-bordered">
-                      <thead>
-                        <tr>
-                          <th>
-                            <i class="icon-tag"></i>&nbsp;&nbsp;&nbsp;${project.getState()}</th>
-                          <th>
-                            <i class="icon-credit-card"></i>&nbsp;&nbsp;&nbsp;$${project.getPrice()}</th>
-                          <th>
-                            <i class="icon-time"></i>&nbsp;&nbsp;&nbsp;${project.getEndTime()}</th>
-                        </tr>
-                      </thead>
-                    </table>
-                  </div>
-                </c:forEach>
+                <%--<c:forEach var="project" items="${projects}">--%>
+                  <%--<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">--%>
+                    <%--<a href="details/${project.getId()}" class="content-box">--%>
+                      <%--<div class="content-box-icon" style="height:270px;overflow: hidden;">--%>
+                        <%--<img src="${project.getPath()}" alt=" " style="width: 100%"/>--%>
+                      <%--</div>--%>
+                      <%--<div class="content-box-info">--%>
+                        <%--<h4 class="text_overflow1">${project.getTitle()}</h4>--%>
+                        <%--<p class="text_overflow">--%>
+                          <%--${project.getContent()}--%>
+                        <%--</p>--%>
+                      <%--</div>--%>
+                    <%--</a>--%>
+                    <%--<table class="table table-striped table-bordered">--%>
+                      <%--<thead>--%>
+                        <%--<tr>--%>
+                          <%--<th>--%>
+                            <%--<i class="icon-tag"></i>&nbsp;&nbsp;&nbsp;${project.getState()}</th>--%>
+                          <%--<th>--%>
+                            <%--<i class="icon-credit-card"></i>&nbsp;&nbsp;&nbsp;$${project.getPrice()}</th>--%>
+                          <%--<th>--%>
+                            <%--<i class="icon-time"></i>&nbsp;&nbsp;&nbsp;${project.getEndTime()}</th>--%>
+                        <%--</tr>--%>
+                      <%--</thead>--%>
+                    <%--</table>--%>
+                  <%--</div>--%>
+                <%--</c:forEach>--%>
 
                 <!-- 3 Column Services End-->
                 <div class="clearfix"></div>
@@ -419,6 +419,47 @@
         <script src="js/spectrum.js"></script>
         <script src="js/switcher.js"></script>
         <script src="js/custom.js"></script>
+      
+      <script>
+        $.ajax({
+            url: 'https://bitcandy.one/getHomeData',
+            type: "post",
+            cache: false,
+            success: function (data) {
+                console.log(data);
+                var activity = data[1];
+                $.each(activity,function (i,item) {
+                    $("#activity").append(
+                        `<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    <a href="details/` + item.id +`" class="content-box">
+                      <div class="content-box-icon" style="height:270px;overflow: hidden;">
+                        <img src="` + item.path + `" alt=" " style="width: 100%"/>
+                      </div>
+                      <div class="content-box-info">
+                        <h4 class="text_overflow1">` + item.title + `}</h4>
+                        <p class="text_overflow">
+                          ` + item.content + `
+                        </p>
+                      </div>
+                    </a>
+                    <table class="table table-striped table-bordered">
+                      <thead>
+                        <tr>
+                          <th>
+                            <i class="icon-tag"></i>&nbsp;&nbsp;&nbsp;` + item.state + `</th>
+                          <th>
+                            <i class="icon-credit-card"></i>&nbsp;&nbsp;&nbsp;` + item.price + `</th>
+                          <th>
+                            <i class="icon-time"></i>&nbsp;&nbsp;&nbsp;` + item.endTime + `</th>
+                        </tr>
+                      </thead>
+                    </table>
+                  </div>`
+                    )
+                })
+            }
+        })
+      </script>
 
     </body>
 

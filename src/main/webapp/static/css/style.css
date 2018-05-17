@@ -2573,6 +2573,7 @@ footer a, .contact-box:hover, #options li a.selected, header .top-bar, header .t
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    height: 10rem;
 }
 
 .text_overflow1 {
