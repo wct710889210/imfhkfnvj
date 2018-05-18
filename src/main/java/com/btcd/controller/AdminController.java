@@ -64,10 +64,10 @@ public class AdminController {
             MultipartHttpServletRequest multipartHttpServletRequest = (MultipartHttpServletRequest)request;
             MultipartFile file = multipartHttpServletRequest.getFile("upfile");
             System.out.printf("isMultipart:"+file.getOriginalFilename()+"\n");
-            if(!file.isEmpty()) {
-                System.out.printf("not empty\n");
+            if(!file.isEmpty()) { ;
                 //上传文件路径
-                String path = request.getServletContext().getRealPath("static"+File.separator+"admin"+File.separator+"ueditor"+File.separator+"jsp"+File.separator+"upload");
+                //String path = request.getServletContext().getRealPath("static"+File.separator+"admin"+File.separator+"ueditor"+File.separator+"jsp"+File.separator+"upload");
+                String path = new File(request.getServletContext().getRealPath("")).getParentFile().getAbsolutePath()+File.separator+"uploadFiles"+File.separator+"ueditor";
                 //上传文件名
                 String filename = file.getOriginalFilename();
                 File filepath = new File(path,filename);
@@ -80,14 +80,13 @@ public class AdminController {
                 String newFileName = String.valueOf(System.currentTimeMillis()).concat("_").concat(getRandom(6)).concat(".").concat(filename.substring(filename.lastIndexOf(".")+1));
                 File ultiPath = new File(path + File.separator + newFileName);
                 ultiPath.setWritable(true,false);
-                System.out.printf("ultiPath:"+ultiPath.getAbsolutePath()+"\n");
                 try {
                     file.transferTo(ultiPath);
-                    m.put("path", "/admin/ueditor/jsp/upload/");
+                    m.put("path", "/uploadFiles/ueditor/");
                     m.put("filename", newFileName);
                     m.put("original", filename);
                     m.put("name", newFileName);
-                    m.put("url", "/admin/ueditor/jsp/upload/"+newFileName);
+                    m.put("url", "/uploadFiles/ueditor/"+newFileName);
                     m.put("state", "SUCCESS");
                     m.put("type",filename.substring(filename.lastIndexOf(".")+1 ));
                     m.put("size", file.getSize());
@@ -164,12 +163,12 @@ public class AdminController {
     }
 
     @RequestMapping("/bannerDelete/{id}")
-    public String bannerDelete(HttpSession session,@PathVariable("id")int id){
+    public String bannerDelete(HttpSession session,@PathVariable("id")int id,HttpServletRequest request){
         if(session.getAttribute("admin" )==null){
             return "redirect:/adminLogin";
         }
         Banner banner = adminService.findBannerById(id);
-        File file = new File(banner.getPath());
+        File file = new File(new File(request.getServletContext().getRealPath("")).getParentFile().getAbsolutePath()+File.separator+banner.getPath());
         if(file.exists()){
             file.delete();
         }
@@ -197,7 +196,8 @@ public class AdminController {
         //如果文件不为空，写入上传路径
         if(!file.isEmpty()) {
             //上传文件路径
-            String path =  request.getServletContext().getRealPath("static"+File.separator+"uploadFiles"+File.separator+"banners");
+            //String path =  request.getServletContext().getRealPath("static"+File.separator+"uploadFiles"+File.separator+"banners");
+            String path = new File(request.getServletContext().getRealPath("")).getParentFile().getAbsolutePath()+File.separator+"uploadFiles"+File.separator+"banners";
             //上传文件名
             String filename = file.getOriginalFilename();
             File filepath = new File(path,filename);
@@ -215,7 +215,8 @@ public class AdminController {
                 e.printStackTrace();
             }
             //删除之前的图片
-            File deleteFile = new File(banner.getPath());
+            File deleteFile = new File( new File(request.getServletContext().getRealPath("")).getParentFile().getAbsolutePath()+File.separator+banner.getPath());
+            System.out.printf("deleteFile:"+deleteFile.getAbsolutePath()+"\n");
             if(deleteFile.exists()){
                 deleteFile.delete();
             }
@@ -243,7 +244,9 @@ public class AdminController {
         }
         if(!file.isEmpty()) {
             //上传文件路径
-            String path = request.getServletContext().getRealPath("static"+File.separator+"uploadFiles"+File.separator+"banners");
+            //String path = request.getServletContext().getRealPath("static"+File.separator+"uploadFiles"+File.separator+"banners");
+            String path = new File(request.getServletContext().getRealPath("")).getParentFile().getAbsolutePath()+File.separator+"uploadFiles"+File.separator+"banners";
+            System.out.printf("path:"+path+"\n");
             //上传文件名
             String filename = file.getOriginalFilename();
             File filepath = new File(path,filename);
@@ -301,7 +304,8 @@ public class AdminController {
             MultipartFile file = multipartHttpServletRequest.getFile("image");
             if(!file.isEmpty()) {
                 //上传文件路径
-                String path = request.getServletContext().getRealPath("static"+File.separator+"uploadFiles"+File.separator+"projects");
+                //String path = request.getServletContext().getRealPath("static"+File.separator+"uploadFiles"+File.separator+"projects");
+                String path = new File(request.getServletContext().getRealPath("")).getParentFile().getAbsolutePath()+File.separator+"uploadFiles"+File.separator+"projects";
                 //上传文件名
                 String filename = file.getOriginalFilename();
                 File filepath = new File(path,filename);
@@ -341,7 +345,7 @@ public class AdminController {
         }
         Project project = adminService.findProjectById(id);
         if(!project.getPath().equals("img/portfolio/portfolio-6.jpg")) {
-            File file = new File(request.getServletContext().getRealPath("static")+File.separator+project.getPath());
+            File file = new File(new File(request.getServletContext().getRealPath("")).getParentFile().getAbsolutePath()+File.separator+project.getPath());
             if (file.exists()) {
                 file.delete();
             }
@@ -392,7 +396,9 @@ public class AdminController {
             MultipartFile file = multipartHttpServletRequest.getFile("image");
             if(!file.isEmpty()) {
                 //上传文件路径
-                String path = request.getServletContext().getRealPath("static"+File.separator+"uploadFiles"+File.separator+"projects");
+                //String path = request.getServletContext().getRealPath("static"+File.separator+"uploadFiles"+File.separator+"projects");
+                String path = new File(request.getServletContext().getRealPath("")).getParentFile().getAbsolutePath()+File.separator+"uploadFiles"+File.separator+"projects";
+                System.out.printf("deleteFile");
                 //上传文件名
                 String filename = file.getOriginalFilename();
                 File filepath = new File(path,filename);
@@ -411,7 +417,7 @@ public class AdminController {
                 }
                 //删除之前的图片
                 if(!project.getPath().equals("img/portfolio/portfolio-6.jpg")) {
-                    File deleteFile = new File(request.getServletContext().getRealPath("static")+File.separator+project.getPath());
+                    File deleteFile = new File(new File(request.getServletContext().getRealPath("")).getParentFile().getAbsolutePath()+File.separator+project.getPath());
                     if (deleteFile.exists()) {
                         deleteFile.delete();
                     }
