@@ -92,7 +92,7 @@
 
             <small> Copyright &copy; bitcandy.one 2018 All Rights Reserved
                 <br/>
-                <a herf="">比特糖果</a> 版权所有
+                <a herf="/">比特糖果</a> 版权所有
             </small>
         </div>
     </div>

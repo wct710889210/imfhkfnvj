@@ -1119,10 +1119,6 @@ ul.graph-container {
     margin: 5px 20px 20px 0;
 }
 
-.img-content img {
-    width: 100%;
-}
-
 .post-image a {
     display: block;
     position: relative;
@@ -2581,5 +2577,12 @@ footer a, .contact-box:hover, #options li a.selected, header .top-bar, header .t
     white-space: nowrap;
     text-overflow: ellipsis;
     -o-text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.text_overflow2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
     overflow: hidden;
 }

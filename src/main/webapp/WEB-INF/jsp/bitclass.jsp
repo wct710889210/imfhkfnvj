@@ -79,7 +79,7 @@
                       </div>
                     </div>
                   </header>
-                  <div class="post-content">
+                  <div class="text_overflow2">
                     ${bitclass.getContent()}
                   </div>
                 </div>
