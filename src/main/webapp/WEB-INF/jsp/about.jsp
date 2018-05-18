@@ -58,7 +58,7 @@
                     <h3 class="title">本站简介</h3>
                     <div class="post-content">
                        <div class="img-content">
-                          <img src="img/team/team.jpg" alt="">
+                          <img src="img/team/btcd.jpg" alt=""  style="height: 15rem;">
                        </div>
                        <p>   比特糖果，其实是区块链世界里的一个戏谑的术语，指那些被项目方当作推广手段使用的，免费发放的虚拟币。</p>
                        <br>

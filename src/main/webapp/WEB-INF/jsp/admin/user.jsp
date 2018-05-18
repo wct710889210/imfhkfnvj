@@ -87,38 +87,72 @@
               <div class="table-responsive">
                 <table id="example-datatable" class="table table-striped table-bordered table-vcenter">
                   <thead>
-                    <tr>
-                      <th class="text-center">
-                        序号
-                      </th>
-                      <th class="text-center">
-                        邮箱
-                      </th>
-                      <th class="text-center">
-                        注册时间
-                      </th>
-                      <th class="text-center">
-                        账户余额
-                      </th>
-                    </tr>
+                  <tr>
+                    <th class="text-center">
+                      序号
+                    </th>
+                    <th class="text-center">
+                      邮箱
+                    </th>
+                    <th class="text-center">
+                      注册时间
+                    </th>
+                    <th class="text-center">
+                      账户余额
+                    </th>
+                    <th class="text-center">
+                      操作
+                    </th>
+                  </tr>
                   </thead>
                   <tbody>
-                      <c:forEach var="user" items="${users}">
-                      <tr>
-                        <td class="text-center">
+                  <c:forEach var="user" items="${users}">
+                    <tr>
+                      <td class="text-center">
                           ${user.getId()}
-                        </td>
-                        <td class="text-center">
+                      </td>
+                      <td class="text-center">
                           ${user.getAccount()}
-                        </td>
-                        <td class="text-center">
+                      </td>
+                      <td class="text-center">
                           ${user.getTime()}
-                        </td>
-                        <td class="text-center">
+                      </td>
+                      <td class="text-center">
                           ${user.getBalance()}
-                        </td>
-                      </tr>
-                      </c:forEach>
+                      </td>
+                      <td class="text-center">
+                        <a href="#modal-compose${user.getId()}" data-toggle="modal" title="删除"
+                           class="btn btn-effect-ripple btn-xs btn-danger">
+                          <i class="fa fa-times"></i>
+                        </a>
+                      </td>
+                    </tr>
+
+                    <div id="modal-compose${user.getId()}" class="modal fade" tabindex="-1" role="dialog"
+                         aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h3 class="modal-title">
+                              <strong>确认操作</strong>
+                            </h3>
+                          </div>
+                          <div class="modal-body">
+                            <div class="form-group">
+                              <div class="col-xs-6">
+                                <span>是否确认删除？</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <a class="btn btn-effect-ripple btn-danger" href="userDelete/${user.getId()}">删除</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </c:forEach>
                   </tbody>
                 </table>
               </div>
@@ -127,7 +161,6 @@
             <!-- END Get Started Block -->
           </div>
           <!-- END Page Content -->
-        </div>
         <!-- END Main Container -->
       </div>
       <!-- END Page Container -->
@@ -141,8 +174,8 @@
     <script src="admin/js/app.js"></script>
     <script src="admin/js/pages/uiTables.js"></script>
     <script>$(function () {
-                UiTables.init();
-            });
+        UiTables.init();
+    });
     </script>
   </body>
 
