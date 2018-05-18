@@ -520,5 +520,13 @@ public class AdminController {
         }
     }
 
-
+    @RequestMapping("/deleteUser/{id}")
+    public String deleteUser(@PathVariable("id")int id,HttpSession session){
+        if(session.getAttribute("admin") == null){
+            return "redirect:/adminLogin";
+        }else {
+            adminService.deleteUserById(id);
+            return "redirect:/userList";
+        }
+    }
 }

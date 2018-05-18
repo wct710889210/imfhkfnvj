@@ -154,6 +154,11 @@ public class AdminServiceImp implements AdminService{
     }
 
     @Override
+    public void deleteUserById(int id) {
+        userDao.delete(id);
+    }
+
+    @Override
     public Admin findAdminByAccount(String account) {
         return adminDao.findByAccount(account);
     }

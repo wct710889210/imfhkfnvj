@@ -28,6 +28,7 @@ public interface AdminService {
     public void deleteBitclass(int id);
 
     public User findUserByAccount(String account);
+    public void deleteUserById(int id);
 
     public Admin findAdminByAccount(String account);
 }
