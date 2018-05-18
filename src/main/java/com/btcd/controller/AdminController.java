@@ -33,6 +33,7 @@ import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 import java.util.regex.Pattern;
 
 @Controller
@@ -61,11 +62,12 @@ public class AdminController {
         commonsMultipartResolver.setDefaultEncoding("utf-8");
         if(commonsMultipartResolver.isMultipart(request)){
             MultipartHttpServletRequest multipartHttpServletRequest = (MultipartHttpServletRequest)request;
-            MultipartFile file = multipartHttpServletRequest.getFile("file");
-
+            MultipartFile file = multipartHttpServletRequest.getFile("upfile");
+            System.out.printf("isMultipart:"+file.getOriginalFilename()+"\n");
             if(!file.isEmpty()) {
+                System.out.printf("not empty\n");
                 //上传文件路径
-                String path = request.getServletContext().getRealPath("static"+File.separator+"admin"+File.separator+"ueditor"+File.separator+"upload");
+                String path = request.getServletContext().getRealPath("static"+File.separator+"admin"+File.separator+"ueditor"+File.separator+"jsp"+File.separator+"upload");
                 //上传文件名
                 String filename = file.getOriginalFilename();
                 File filepath = new File(path,filename);
@@ -75,16 +77,17 @@ public class AdminController {
                     filepath.getParentFile().mkdirs();
                 }
                 //将上传文件保存到一个目标文件当中
-                String newFileName = adminService.generateRandomFilename()+filename.substring(filename.lastIndexOf(".")+1);
+                String newFileName = String.valueOf(System.currentTimeMillis()).concat("_").concat(getRandom(6)).concat(".").concat(filename.substring(filename.lastIndexOf(".")+1));
                 File ultiPath = new File(path + File.separator + newFileName);
                 ultiPath.setWritable(true,false);
+                System.out.printf("ultiPath:"+ultiPath.getAbsolutePath()+"\n");
                 try {
                     file.transferTo(ultiPath);
-                    m.put("path", "ueditor"+File.separator+"upload" + "/");
+                    m.put("path", "/admin/ueditor/jsp/upload/");
                     m.put("filename", newFileName);
                     m.put("original", filename);
                     m.put("name", newFileName);
-                    m.put("url", "ueditor"+File.separator+"upload" + "/"+newFileName);
+                    m.put("url", "/admin/ueditor/jsp/upload/"+newFileName);
                     m.put("state", "SUCCESS");
                     m.put("type",filename.substring(filename.lastIndexOf(".")+1 ));
                     m.put("size", file.getSize());
@@ -94,6 +97,15 @@ public class AdminController {
             }
         }
         return m;
+    }
+
+    public String getRandom(int num){
+        Random random = new Random();
+        StringBuilder sb = new StringBuilder();
+        for(int i = 0;i < num; i++){
+            sb.append(String.valueOf(random.nextInt(10)));
+        }
+        return sb.toString();
     }
 
     @RequestMapping("/admin")
