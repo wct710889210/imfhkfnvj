@@ -64,7 +64,7 @@ public class AdminController {
             MultipartHttpServletRequest multipartHttpServletRequest = (MultipartHttpServletRequest)request;
             MultipartFile file = multipartHttpServletRequest.getFile("upfile");
             System.out.printf("isMultipart:"+file.getOriginalFilename()+"\n");
-            if(!file.isEmpty()) { ;
+            if(!file.isEmpty()) {
                 //上传文件路径
                 //String path = request.getServletContext().getRealPath("static"+File.separator+"admin"+File.separator+"ueditor"+File.separator+"jsp"+File.separator+"upload");
                 String path = new File(request.getServletContext().getRealPath("")).getParentFile().getAbsolutePath()+File.separator+"uploadFiles"+File.separator+"ueditor";
