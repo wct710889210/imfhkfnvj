@@ -64,7 +64,7 @@ public class AdminController {
             MultipartHttpServletRequest multipartHttpServletRequest = (MultipartHttpServletRequest)request;
             MultipartFile file = multipartHttpServletRequest.getFile("upfile");
             System.out.printf("isMultipart:"+file.getOriginalFilename()+"\n");
-            if(!file.isEmpty()) { ;
+            if(!file.isEmpty()) {
                 //上传文件路径
                 //String path = request.getServletContext().getRealPath("static"+File.separator+"admin"+File.separator+"ueditor"+File.separator+"jsp"+File.separator+"upload");
                 String path = new File(request.getServletContext().getRealPath("")).getParentFile().getAbsolutePath()+File.separator+"uploadFiles"+File.separator+"ueditor";
@@ -520,5 +520,13 @@ public class AdminController {
         }
     }
 
-
+    @RequestMapping("/deleteUser/{id}")
+    public String deleteUser(@PathVariable("id")int id,HttpSession session){
+        if(session.getAttribute("admin") == null){
+            return "redirect:/adminLogin";
+        }else {
+            adminService.deleteUserById(id);
+            return "redirect:/userList";
+        }
+    }
 }

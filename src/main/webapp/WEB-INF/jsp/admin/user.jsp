@@ -146,7 +146,7 @@
                             </div>
                           </div>
                           <div class="modal-footer">
-                            <a class="btn btn-effect-ripple btn-danger" href="userDelete/${user.getId()}">删除</a>
+                            <a class="btn btn-effect-ripple btn-danger" href="deleteUser/${user.getId()}">删除</a>
                           </div>
                         </div>
                       </div>
