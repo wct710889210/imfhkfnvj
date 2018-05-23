@@ -3,13 +3,6 @@
     <!-- Main Header Start -->
     <div class="main-header">
         <div class="container">
-            <!-- TopNav Start -->
-            <div class="topnav navbar-header">
-                <a class="navbar-toggle down-button" data-toggle="collapse" data-target=".slidedown">
-                    <i class="icon-angle-down icon-current"></i>
-                </a>
-            </div>
-            <!-- TopNav End -->
             <!-- Logo Start -->
             <div class="logo pull-left">
                 <h1>
@@ -20,14 +13,16 @@
             </div>
             <!-- Logo End -->
             <!-- Mobile Menu Start -->
-            <div class="mobile navbar-header">
-                <a class="navbar-toggle" data-toggle="collapse" href="#">
+            <nav role="navigation">
+            <div class="mobile navbar-header text-center">
+                <sapn class="navbar-toggle" data-toggle="collapse" data-target="#example-navbar-collapse">
                     <i class="icon-reorder icon-2x"></i>
-                </a>
+                </sapn>
             </div>
             <!-- Mobile Menu End -->
             <!-- Menu Start -->
-            <nav class="collapse navbar-collapse menu">
+
+                <div class="collapse navbar-collapse menu" id="example-navbar-collapse">
                 <ul class="nav navbar-nav sf-menu">
                     <li>
                         <a href="/">首页</a>
@@ -45,6 +40,7 @@
                         <a href="/about">关于我们</a>
                     </li>
                 </ul>
+                </div>
             </nav>
             <!-- Menu End -->
         </div>
