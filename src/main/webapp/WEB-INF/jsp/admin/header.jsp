@@ -141,13 +141,13 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#.html">
+                        <a href="/adminLogin">
                             <i class="hi hi-retweet pull-right"></i>
                             切换用户
                         </a>
                     </li>
                     <li>
-                        <a href="#.html">
+                        <a href="/adminLogout">
                             <i class="hi hi-off pull-right"></i>
                             注销账号
                         </a>

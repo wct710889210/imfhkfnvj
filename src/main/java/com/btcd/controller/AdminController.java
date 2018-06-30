@@ -520,6 +520,14 @@ public class AdminController {
         }
     }
 
+    @RequestMapping("adminLogout")
+    public String adminLogout(HttpSession session){
+        if(session.getAttribute("admin") != null){
+            session.removeAttribute("admin");
+        }
+        return "redirect:/adminLogin";
+    }
+
     @RequestMapping("/deleteUser/{id}")
     public String deleteUser(@PathVariable("id")int id,HttpSession session){
         if(session.getAttribute("admin") == null){

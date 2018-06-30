@@ -62,8 +62,8 @@
           <!-- Main Content start-->
           <div class="main-content">
             <!-- 3 Column Big Services -->
-            <div class="container" id="activity">
-              <div class="row">
+            <div class="container">
+              <div class="row"  id="activity">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                   <h3 class="title">糖果列表</h3>
                 </div>
@@ -98,7 +98,6 @@
                 <%--</c:forEach>--%>
 
                 <!-- 3 Column Services End-->
-                <div class="clearfix"></div>
               </div>
 
               <div class="divider"></div>
@@ -420,7 +419,7 @@
                         <img src="` + item.path + `" alt=" " style="width: 100%"/>
                       </div>
                       <div class="content-box-info">
-                        <h4 class="text_overflow1">` + item.title + `}</h4>
+                        <h4 class="text_overflow1">` + item.title + `</h4>
                         <p class="text_overflow">
                           ` + item.content + `
                         </p>
